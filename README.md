@@ -13,3 +13,14 @@ node app.js
 で始まるとは思うのですが、まだこれから動くかどうかしらべます。
 
 gitも始めてなので、moduleとかもはいってしまってこれから削除しようと思います。
+
+# 初期設定
+環境変数に
+
+  TWITTER_CONSUMER_KEY
+  TWITTER_CONSUMER_SECRET
+  TWITTER_ACCESS_TOKEN_KEY
+  TWITTER_ACCESS_TOKEN_SECRET
+
+の４つを設定してから起動してきださい。そうすると
+起動できます。あとは、リンクのついたところをクリックしてください。
