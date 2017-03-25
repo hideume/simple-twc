@@ -1,0 +1,11 @@
+html
+  include includes/head.pug
+    table
+      tbody
+        - for (var i=0;i<tw.length;i++) {
+            tr
+              td #{i}
+              td #{new Date(tw[i].created_at).toLocaleString()}
+              td #{tw[i].user.screen_name}
+              td #{tw[i].user.name}
+        - }

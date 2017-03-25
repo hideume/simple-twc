@@ -1,0 +1,9 @@
+html
+    include includes/head.pug
+    -var hm = lm.resources.statuses["/statuses/home_timeline"]
+    -var us = lm.resources.statuses["/statuses/user_timeline"]
+    -var sc = lm.resources.search["/search/tweets"]
+    p ---- limit status ---- <br>
+    | home = #{hm.limit} #{hm.remaining} #{new Date(hm.reset).toLocaleString().substr(11,8)} <br>
+    | user = #{us.limit} #{us.remaining} #{new Date(us.reset).toLocaleString().substr(11,8)} <br>
+    | serch= #{sc.limit} #{sc.remaining} #{new Date(sc.reset).toLocaleString().substr(11,8)}
