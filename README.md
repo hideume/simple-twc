@@ -17,10 +17,12 @@ gitも始めてなので、moduleとかもはいってしまってこれから�
 # 初期設定
 環境変数に
 
+<pre>
   TWITTER_CONSUMER_KEY
   TWITTER_CONSUMER_SECRET
   TWITTER_ACCESS_TOKEN_KEY
   TWITTER_ACCESS_TOKEN_SECRET
+</pre>
 
-の４つを設定してから起動してきださい。そうすると
+の４つを設定してから起動してください。そうすると
 起動できます。あとは、リンクのついたところをクリックしてください。
