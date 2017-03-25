@@ -17,7 +17,7 @@ var client  = new Twitter({
 
 //index
 app.get('/',function(req,res) {
-  var params = {screen_name: 'hawaii_hahaha',count:30};
+  var params = {screen_name: process.env.TWITTER_SCREEN_NAME,count:30};
   client.get('statuses/home_timeline', params, function(error, tweets, respo) {
     if(!error) {
         res.render('index',{tw:tweets});
