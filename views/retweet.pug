@@ -6,6 +6,7 @@ html
             tr
               td #{i}
               td #{new Date(tw[i].created_at).toLocaleString()}
-              td #{tw[i].user.screen_name}
+              - var sc = tw[i].user.screen_name
+              td <a href="http://localhost:3000/tl?nm=#{sc}">#{sc}</a>
               td #{tw[i].user.name}
         - }
