@@ -9,10 +9,10 @@ simple twitter ctient
 var Twitter = require('twitter')
 
 var client  = new Twitter({
-  consumer_key: '6GIV52GesBwULyq0m0X2Uw',
-  consumer_secret: 'wMtOaPC8IqxBGI3K1K4yoYqZQXPo7YPfN4iViEf4Qnw',
-  access_token_key: '133929955-TJAEQi91oNrLSDt0la1sHb9trwkngrAswdJZ1O7z',
-  access_token_secret: 'BwzjaUM4GZMh9L2NJqA6czzyFUCGPFoDx7TVKnJQ'
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
 //index
@@ -41,6 +41,29 @@ app.get('/tl',function(req,res) {
   client.get('statuses/user_timeline', params, function(error, tweets, respo) {
     if(!error) {
         res.render('index',{tw:tweets});
+    }
+  });
+});
+
+//limit
+app.get('/lm',function(req,res) {
+  var params = {};
+  client.get('application/rate_limit_status', params, function(error, limit, respo) {
+    if(!error) {
+        res.render('limit',{lm:limit});
+    }
+  });
+});
+
+//retweet
+app.get('/rt',function(req,res) {
+  var params = {trim_user:false,count:50};
+  var ids = req.query.rt
+  client.get('statuses/retweets/'+ids, params, function(error, stt, respo) {
+    if(!error) {
+        res.render('retweet',{tw:stt});
+    }else{
+      console.log(error)
     }
   });
 });

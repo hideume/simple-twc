@@ -1,6 +1,7 @@
 //- user&home time
 //-
 html
+  include includes/head.pug
   table(border=1 style="border-collapse: collapse;")
     tbody
         - for (var i=0 ;i<tw.length ; i++) {
@@ -10,9 +11,11 @@ html
                 td(style="vertical-align:top;") <img src=#{tw[i].user.profile_image_url} width=32 height=32>
                 td #{i} --#{tm} @<a href="http://localhost:3000/tl?nm=#{sc}">#{sc}</a> <a href="http://localhost:3000/us?nm=#{sc}">#{tw[i].user.name}</a><br>
                     | #{tw[i].text} 
-                    if tw[i].retweet_count > 100 
-                       <font color=RED>re:#{tw[i].retweet_count}</font>
-                    else
-                       | re:#{tw[i].retweet_count}
+                    if tw[i].retweet_count > 100
+                       - var id = tw[i].retweeted_status.id_str
+                       <a href="http://localhost:3000/rt?rt=#{id}"><font color=RED>re:#{tw[i].retweet_count}</font></a>
+                    else if tw[i].retweeted_status
+                       - var id = tw[i].retweeted_status.id_str
+                       <a href="http://localhost:3000/rt?rt=#{id}">re:#{tw[i].retweet_count}</a>
 
         -  }
