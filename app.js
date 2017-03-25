@@ -71,7 +71,7 @@ app.get('/rt',function(req,res) {
 //listed
 app.get('/listed',function(req,res) {
   var params = {screen_name:req.query.nm,count:50};
-  client.get('statuses/retweets/'+ids, params, function(error, lts, respo) {
+  client.get('lists/memberships', params, function(error, lts, respo) {
     if(!error) {
         res.render('listed',{tw:lts});
     }else{

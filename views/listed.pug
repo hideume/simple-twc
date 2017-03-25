@@ -1,0 +1,9 @@
+html
+  include includes/head.pug
+    table
+      tbody
+        - for (var i=0;i<tw.lists.length;i++) {
+            tr
+              td #{i}
+              td #{tw.lists[i].full_name}
+        - }

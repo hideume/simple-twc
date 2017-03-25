@@ -13,5 +13,5 @@ html
        |tweets  :#{user[0].statuses_count}<br>
        |follow  :#{user[0].friends_count}<br>
        |follower:#{user[0].followers_count}<br>
-       - var sc = new user[0].screen_name
+       - var sc = user[0].screen_name
        |listed  :<a href="http://localhost:3000/listed?nm=#{sc}">#{user[0].listed_count}</a>
