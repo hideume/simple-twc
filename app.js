@@ -68,5 +68,17 @@ app.get('/rt',function(req,res) {
   });
 });
 
+//listed
+app.get('/listed',function(req,res) {
+  var params = {screen_name:req.query.nm,count:50};
+  client.get('statuses/retweets/'+ids, params, function(error, lts, respo) {
+    if(!error) {
+        res.render('listed',{tw:lts});
+    }else{
+      console.log(error)
+    }
+  });
+});
+
 console.log("listen 3000")
 app.listen(3000);
