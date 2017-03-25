@@ -1,9 +1,15 @@
 html
   include includes/head.pug
     table
+      thead
+          tr
+            td No
+            td list name
+            td member count
       tbody
         - for (var i=0;i<tw.lists.length;i++) {
             tr
               td #{i}
               td #{tw.lists[i].full_name}
+              td #{tw.lists[i].member_count}              
         - }
