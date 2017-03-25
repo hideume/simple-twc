@@ -1,0 +1,16 @@
+html
+  table(border=1 style="border-collapse: collapse;")
+    tbody
+        - for (var i=0 ;i<tw.length ; i++) {
+            tr
+                - var sc = tw[i].user.screen_name
+                - var tm = new Date(tw[i].created_at).toLocaleString("ja-JP")
+                td(style="vertical-align:top;") <img src=#{tw[i].user.profile_image_url} width=32 height=32>
+                td #{i} --#{tm} @<a href="http://localhost:3000/tl?nm=#{sc}">#{sc}</a> <a href="http://localhost:3000/us?nm=#{sc}">#{tw[i].user.name}</a><br>
+                    | #{tw[i].text} 
+                    if tw[i].retweet_count > 100 
+                       <font color=RED>re:#{tw[i].retweet_count}</font>
+                    else
+                       | re:#{tw[i].retweet_count}
+
+        -  }

@@ -1,0 +1,10 @@
+<html>
+<body>
+<% for (var i = 0; i < 10; i++) { 
+  xx=new Date(tw[i].created_at) %>
+<p><%= i%>-- <%= xx.getDate()%> <%=xx.getHours()%>:<%=xx.getMinutes()%> @<%= tw[i].user.screen_name%> <%= tw[i].user.name%><br>
+<%= tw[i].text %><br>
+re:<%= tw[i].retweet_count %></p>
+<% } %>
+</body>
+</html>
