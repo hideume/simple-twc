@@ -30,7 +30,9 @@ app.get('/us',function(req,res) {
   var params = {screen_name: req.query.nm};
   client.get('users/lookup', params, function(error, us, respo) {
     if(!error) {
-        res.render('user',{user:us});
+        client.get('lists/list',params,function(er,ls,respo2) {
+          res.render('user',{user:us,list:ls});
+        });
     }
   });
 });
@@ -74,6 +76,18 @@ app.get('/listed',function(req,res) {
   client.get('lists/memberships', params, function(error, lts, respo) {
     if(!error) {
         res.render('listed',{tw:lts});
+    }else{
+      console.log(error)
+    }
+  });
+});
+
+//search
+app.get('/sc',function(req,res) {
+  var params = {q:req.query.q,count:50};
+  client.get('search/tweets', params, function(error, tweets, respo) {
+    if(!error) {
+        res.render('index',{tw:tweets.statuses});
     }else{
       console.log(error)
     }

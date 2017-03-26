@@ -9,10 +9,10 @@ html
                 - var sc = tw[i].user.screen_name
                 - var tm = new Date(tw[i].created_at).toLocaleString("ja-JP")
                 td(style="vertical-align:top;") <img src=#{tw[i].user.profile_image_url} width=32 height=32>
-                td #{i} --#{tm} @<a href="http://localhost:3000/tl?nm=#{sc}">#{sc}</a> <a href="http://localhost:3000/us?nm=#{sc}">#{tw[i].user.name}</a><br>
+                td #{i} --#{tm} @<a href=#{myhttp+"/tl?nm="+sc}">#{sc}</a> <a href=#{myhttp+"/us?nm="+sc}>#{tw[i].user.name}</a><br>
                     | #{tw[i].text} 
                     if tw[i].retweeted_status
                        - var id = tw[i].retweeted_status.id_str
-                       <a href="http://localhost:3000/rt?rt=#{id}">re:#{tw[i].retweet_count}</a>
+                       <a href=#{myhttp+"/rt?rt="+id}">re:#{tw[i].retweet_count}</a>
 
         -  }

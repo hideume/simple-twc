@@ -1,3 +1,14 @@
-p 
- |<a href="http://localhost:3000">home</a>
- |<a href="http://localhost:3000/lm">lm</a>
+- var myhttp = "http://localhost:3000"
+#top
+ | simple-twitter-client 
+ | #{process.env.TWITTER_SCREEN_NAME}
+ |<a href=#{myhttp}>home</a>
+ |<a href=#{myhttp+"/lm"}>lm</a>
+ | ________________________________________ v0.1.0 at 2017/3/25 <br>
+input(type='text' size=60 id="idtext") 
+input(type='button' onclick="clicked()" value="検索" width=60 height=20) 
+script
+  |function clicked() {
+  | console.log("clicked!")
+  | idtext = document.getElementById('idtext');
+  | location.href='http://localhost:3000/sc?q='+idtext.value; }

@@ -1,12 +1,18 @@
 html
   include includes/head.pug
-    table
-      tbody
-        - for (var i=0;i<tw.length;i++) {
-            tr
-              td #{i}
-              td #{new Date(tw[i].created_at).toLocaleString()}
-              - var sc = tw[i].user.screen_name
-              td <a href="http://localhost:3000/tl?nm=#{sc}">#{sc}</a>
-              td #{tw[i].user.name}
-        - }
+  table
+    thead
+      tr
+        td no
+        td Date
+        td screen_name
+        td name          
+    tbody
+      - for (var i=0;i<tw.length;i++) {
+          tr
+            td #{i}
+            td #{new Date(tw[i].created_at).toLocaleString()}
+            - var sc = tw[i].user.screen_name
+            td <a href="http://localhost:3000/tl?nm=#{sc}">#{sc}</a>
+            td <a href="http://localhost:3000/us?nm=#{sc}">#{tw[i].user.name}</a>
+      - }
