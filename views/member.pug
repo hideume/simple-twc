@@ -1,0 +1,16 @@
+html
+  include includes/head.pug
+  table
+    thead
+      tr
+        td no
+        td screen_name
+        td name          
+    tbody
+      - for (var i=0;i<mem.length;i++) {
+          tr
+            td #{i}
+            -var sc = mem[i].screen_name
+            td <a href=#{myhttp+"/tl?nm="+sc}>#{sc}</a>
+            td <a href=#{myhttp+"/us?nm="+sc}>#{mem[i].name}</a>
+      - }

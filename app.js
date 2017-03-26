@@ -94,5 +94,17 @@ app.get('/sc',function(req,res) {
   });
 });
 
+//listmenber
+app.get('/listmember',function(req,res) {
+  var params = {owner_screen_name:req.query.nm,slug:req.query.slug};
+  client.get('lists/members', params, function(error, member, respo) {
+    if(!error) {
+        res.render('member',{mem:member.users});
+    }else{
+      console.log(error)
+    }
+  });
+});
+
 console.log("listen 3000")
 app.listen(3000);

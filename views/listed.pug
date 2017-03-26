@@ -12,7 +12,9 @@ html
           tr
             td #{i}
             - var sc = tw.lists[i].user.screen_name
+            - var mc = tw.lists[i].member_count
+            - var slg = tw.lists[i].slug
             td <a href=#{myhttp+"/us?nm="+sc}>#{sc}</a>
             td #{tw.lists[i].name}
-            td #{tw.lists[i].member_count}              
+            td <a href=#{myhttp+"/listmember?nm="+sc+"&slug="+slg}>#{mc}</a>         
       - }
