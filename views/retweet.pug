@@ -1,5 +1,6 @@
 html
   include includes/head.pug
+  li retweet status ----
   table
     thead
       tr
@@ -7,6 +8,7 @@ html
         td Date
         td screen_name
         td name          
+        td location          
     tbody
       - for (var i=0;i<tw.length;i++) {
           tr
@@ -15,4 +17,5 @@ html
             - var sc = tw[i].user.screen_name
             td <a href="http://localhost:3000/tl?nm=#{sc}">#{sc}</a>
             td <a href="http://localhost:3000/us?nm=#{sc}">#{tw[i].user.name}</a>
+            td #{tw[i].user.location}
       - }

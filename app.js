@@ -106,5 +106,15 @@ app.get('/listmember',function(req,res) {
   });
 });
 
+//trend
+app.get('/tr',function(req,res) {
+  var params = {id:'23424856'}
+  client.get('trends/place', params, function(error, tren, respo) {
+    if(!error) {
+        res.render('trend',{tr:tren[0].trends});
+    }
+  });
+});
+
 console.log("listen 3000")
 app.listen(3000);

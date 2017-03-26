@@ -12,7 +12,8 @@ html
        |start at:#{tm}<br>
        |コメント:#{user[0].description}<br>
        |following:#{user[0].following}
-       |tweets  :#{user[0].statuses_count}
+       |tweets  :<a href=#{myhttp+"/tl?nm="+sc}>#{user[0].statuses_count}</a>
+       |favourites:#{user[0].favourites_count}
        |follow  :#{user[0].friends_count}
        |follower:#{user[0].followers_count}
        - var sc = user[0].screen_name

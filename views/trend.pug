@@ -1,0 +1,14 @@
+html
+  include includes/head.pug
+  table
+    thead
+      tr
+        td no
+        td name          
+    tbody
+      - for (var i=0;i<tr.length;i++) {
+          tr
+            td #{i}
+            -var txt = decodeURIComponent(tr[i].query)
+            td #{txt}
+      - }

@@ -5,14 +5,12 @@ twitter apiには、いろんな機能がありますが、一般的なweb clien
 まあ、expressとpugの勉強というべきものかもしれません。
 
 # install
-package.jsonはついているのですが、ちょっと適当です。
-npm installで動くかどうかは保証の限りではありません。
-
+<pre>
+npm install
 node app.js
-ブラウザでhttp://localhost:3000
-で始まるとは思うのですが、まだこれから動くかどうかしらべます。
-
-gitも始めてなので、moduleとかもはいってしまってこれから削除しようと思います。
+</pre>
+環境設定後、ブラウザでhttp://localhost:3000
+で始まります。
 
 # 初期設定
 環境変数に
@@ -31,12 +29,12 @@ gitも始めてなので、moduleとかもはいってしまってこれから�
 # install testの結果
 とりあえず
 <pre>
+ git clone https://github.com/hideume/simple-twc
  npm install
  node app.js
 </pre>
 
-で、localhost:3000でブラウザで動作できているのをgit clone
-で持ってきたのを起動できるのを確認しました。
+で、localhost:3000でブラウザで動作できているのを確認しました。
 
 開発はwindows7上でやってます。確認用にvmのubuntuで確認しました
 
