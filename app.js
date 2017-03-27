@@ -126,5 +126,16 @@ app.get('/fr',function(req,res) {
   });
 });
 
+//tweet
+app.get('/tw',function(req,res) {
+  var params = {status:req.query.q}
+  client.post('statuses/update', params,function(error, friends, respo) {
+    if(error) {
+      console.log('err')
+    }
+  });
+});
+
+
 console.log("listen 3000")
 app.listen(3000);

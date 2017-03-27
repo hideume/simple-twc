@@ -1,9 +1,10 @@
 # 予定
 emoji,style改善,androido化,list time-line
-retweet速度計算、user評価,favarite
-post=tweet/retweet,follow on/off,list支援
-lohalhost->自分のip,next
-# v0.3.0 
+retweet速度計算、user評価,
+post=retweet,follow on/off,list支援
+# v0.4.0
+lohalhost->自分のip,next,favarite
+# v0.3.0 3/27
 followmenber,trend,tweet
 # v0.2.0  second 3/26
 headにmyhttpを集中

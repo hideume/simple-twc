@@ -10,5 +10,5 @@ html
           tr
             td #{i}
             -var txt = decodeURIComponent(tr[i].query)
-            td #{txt}
+            td <a href=#{myhttp+'/sc?q='+tr[i].query}>#{txt}</a>
       - }

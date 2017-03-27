@@ -8,8 +8,16 @@
  | _____________________________________ v0.2.0 at 2017/3/26 <br>
 input(type='text' size=60 id="idtext") 
 input(type='button' onclick="clicked()" value="検索" width=60 height=20) 
+input(type='hidden' size=2)
+input(type='button' onclick="tweet()" value="ｔｗ" width=60 height=20) 
 script
   |function clicked() {
   | console.log("clicked!")
   | idtext = document.getElementById('idtext');
   | location.href='http://localhost:3000/sc?q='+idtext.value; }
+script
+  | function tweet() {
+  | console.log("tweet!")
+  | idtext = document.getElementById('idtext');
+  | location.href='http://localhost:3000/tw?q='+idtext.value;
+  | }
