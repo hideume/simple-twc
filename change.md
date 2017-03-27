@@ -2,6 +2,7 @@
 emoji,style改善,androido化,list time-line
 retweet速度計算、user評価,favarite
 post=tweet/retweet,follow on/off,list支援
+lohalhost->自分のip,next
 # v0.3.0 
 followmenber,trend,tweet
 # v0.2.0  second 3/26

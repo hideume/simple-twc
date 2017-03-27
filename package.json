@@ -9,7 +9,7 @@
   "author": "ume",
   "license": "MIT",
   "dependencies": {
-    "pug": "^2.0.0",
+    "pug": "^2.0.0-alpha8",
     "express": "^4.15.2",
     "twitter": "^1.7.0"
   }

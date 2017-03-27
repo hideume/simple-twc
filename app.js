@@ -116,5 +116,15 @@ app.get('/tr',function(req,res) {
   });
 });
 
+//trend
+app.get('/fr',function(req,res) {
+  var params = {screen_name:req.query.nm}
+  client.get('friends/list', params, function(error, friends, respo) {
+    if(!error) {
+        res.render('member',{mem:friends.users});
+    }
+  });
+});
+
 console.log("listen 3000")
 app.listen(3000);

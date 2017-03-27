@@ -7,6 +7,7 @@ html
         <img src=#{user[0].profile_image_url} width=60 height=60>
      td
        - var tm = new Date(user[0].created_at).toLocaleString("ja-JP")
+       - var sc = user[0].screen_name
        p #{user[0].screen_name} #{user[0].name} <br>
        |location:#{user[0].location}<br>
        |start at:#{tm}<br>
@@ -14,7 +15,7 @@ html
        |following:#{user[0].following}
        |tweets  :<a href=#{myhttp+"/tl?nm="+sc}>#{user[0].statuses_count}</a>
        |favourites:#{user[0].favourites_count}
-       |follow  :#{user[0].friends_count}
+       |follow  :<a href=#{myhttp+"/fr?nm="+sc}>#{user[0].friends_count}</a>
        |follower:#{user[0].followers_count}
        - var sc = user[0].screen_name
        |listed  :<a href=#{myhttp+"/listed?nm="+sc}>#{user[0].listed_count}</a>
