@@ -1,6 +1,9 @@
 html
   include includes/head.pug
-  li retweet status ----
+  -var t1 = new Date(tw[0].created_at)
+  -var t2 = new Date(tw[tw.length-1].created_at)
+  -var twecount = tw.length*60*60*1000/(t1-t2)
+  #11 retweet status ---- #{(" "+twecount).substr(0,8)} tweet/時間 
   table
     thead
       tr
@@ -17,5 +20,5 @@ html
             - var sc = tw[i].user.screen_name
             td <a href="http://localhost:3000/tl?nm=#{sc}">#{sc}</a>
             td <a href="http://localhost:3000/us?nm=#{sc}">#{tw[i].user.name}</a>
-            td #{tw[i].user.location}
+            td #{tw[i].user.location.substr(0,15)}
       - }

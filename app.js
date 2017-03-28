@@ -125,14 +125,16 @@ app.get('/fr',function(req,res) {
   }
   client.get('friends/list', params, function(error, friends, respo) {
     if(!error) {
-        res.render('member_n',{mem:friends.users,next:friends.next_cursor,user:req.query.nm});
+        res.render('member_n',{mem:friends,user:req.query.nm});
+    }else{
+      console.log(error);
     }
   });
 });
 
 //tweet
 app.get('/tw',function(req,res) {
-  var parms={status:req.query.q}
+  var params={status:req.query.q}
   client.post('statuses/update', params,function(error, friends, respo) {
     if(error) {
       console.log('err')
