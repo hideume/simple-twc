@@ -118,17 +118,21 @@ app.get('/tr',function(req,res) {
 
 //trend
 app.get('/fr',function(req,res) {
-  var params = {screen_name:req.query.nm}
+  if(req.query.next) {
+    params = {screen_name:req.query.nm,cursor:req.query.next}
+  } else {
+    params = {screen_name:req.query.nm}
+  }
   client.get('friends/list', params, function(error, friends, respo) {
     if(!error) {
-        res.render('member',{mem:friends.users});
+        res.render('member_n',{mem:friends.users,next:friends.next_cursor,user:req.query.nm});
     }
   });
 });
 
 //tweet
 app.get('/tw',function(req,res) {
-  var params = {status:req.query.q}
+  var parms={status:req.query.q}
   client.post('statuses/update', params,function(error, friends, respo) {
     if(error) {
       console.log('err')
