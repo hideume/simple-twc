@@ -2,8 +2,35 @@ html
     include includes/head.pug
     -var hm = lm.resources.statuses["/statuses/home_timeline"]
     -var us = lm.resources.statuses["/statuses/user_timeline"]
+    -var rt = lm.resources.statuses["/statuses/retweets/:id"]
     -var sc = lm.resources.search["/search/tweets"]
-    p ---- limit status ---- <br>
-    | home = #{hm.limit} #{hm.remaining} #{new Date(hm.reset).toLocaleString().substr(11,8)} <br>
-    | user = #{us.limit} #{us.remaining} #{new Date(us.reset).toLocaleString().substr(11,8)} <br>
-    | serch= #{sc.limit} #{sc.remaining} #{new Date(sc.reset).toLocaleString().substr(11,8)}
+    -var c1 = lm.resources.friends["/friends/list"]
+    //-var c2 = lm.resources.users["/users/contributees"]
+    #11 ---- limit status ---- <br>
+    table
+      tbody
+        tr
+          td home    = 
+          td #{hm.limit} 
+          td #{hm.remaining} 
+          td #{new Date(hm.reset*1000).toLocaleString().substr(11,8)} 
+        tr
+          td user    = 
+          td #{us.limit} 
+          td #{us.remaining} 
+          td #{new Date(us.reset*1000).toLocaleString().substr(11,8)} 
+        tr
+          td retweet = 
+          td #{rt.limit} 
+          td #{rt.remaining} 
+          td #{new Date(rt.reset*1000).toLocaleString().substr(11,8)} 
+        tr
+          td serch   = 
+          td #{sc.limit} 
+          td #{sc.remaining} 
+          td #{new Date(sc.reset*1000).toLocaleString().substr(11,8)} 
+        tr
+          td fr/list = 
+          td #{c1.limit}
+          td #{c1.remaining}
+          td #{new Date(c1.reset*1000).toLocaleString().substr(11,8)} 

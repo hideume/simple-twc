@@ -127,7 +127,7 @@ app.get('/fr',function(req,res) {
     if(!error) {
         res.render('member_n',{mem:friends,user:req.query.nm});
     }else{
-      console.log(error);
+      alert(error);
     }
   });
 });
