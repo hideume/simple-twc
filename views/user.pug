@@ -8,7 +8,7 @@ html
      td
        - var tm = new Date(user[0].created_at).toLocaleString("ja-JP")
        - var sc = user[0].screen_name
-       p #{user[0].screen_name} #{user[0].name} <br>
+       #11 #{user[0].screen_name} #{user[0].name} <br>
        |location:#{user[0].location}<br>
        |start at:#{tm}<br>
        |コメント:#{user[0].description}<br>
@@ -19,6 +19,7 @@ html
        |follower:#{user[0].followers_count}
        - var sc = user[0].screen_name
        |listed  :<a href=#{myhttp+"/listed?nm="+sc}>#{user[0].listed_count}</a>
+       #12 protected #{user[0].protected}
  p list length = #{list.length}
  table
    thead

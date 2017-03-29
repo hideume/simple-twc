@@ -43,6 +43,8 @@ app.get('/tl',function(req,res) {
   client.get('statuses/user_timeline', params, function(error, tweets, respo) {
     if(!error) {
         res.render('index',{tw:tweets});
+    }else{
+      console.log(error)
     }
   });
 });
@@ -119,15 +121,15 @@ app.get('/tr',function(req,res) {
 //trend
 app.get('/fr',function(req,res) {
   if(req.query.next) {
-    params = {screen_name:req.query.nm,cursor:req.query.next}
+    params = {screen_name:req.query.nm,cursor:req.query.next,count:50}
   } else {
-    params = {screen_name:req.query.nm}
+    params = {screen_name:req.query.nm,count:50}
   }
   client.get('friends/list', params, function(error, friends, respo) {
     if(!error) {
         res.render('member_n',{mem:friends,user:req.query.nm});
     }else{
-      alert(error);
+      console.log(error);
     }
   });
 });
