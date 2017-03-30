@@ -1,7 +1,9 @@
 # 予定
 emoji,style改善,androido化,list time-line
-user評価,post=retweet,follow on/off,list支援
-# v0.4.0
+user評価,list支援,web連携,RT 元tweet表示
+# v0.5.0
+post=retweet,follow on/off
+# v0.4.0 3/30
 retweet速度計算,next,favarite
 # v0.3.0 3/27
 followmenber,trend,tweet
