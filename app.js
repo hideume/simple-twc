@@ -127,7 +127,7 @@ app.get('/fr',function(req,res) {
   }
   client.get('friends/list', params, function(error, friends, respo) {
     if(!error) {
-        res.render('member_n',{mem:friends,user:req.query.nm});
+        res.render('member_n',{mem:friends,user:req.query.nm,no:req.query.no});
     }else{
       console.log(error);
     }
@@ -144,6 +144,17 @@ app.get('/tw',function(req,res) {
   });
 });
 
+//tweet
+app.get('/fv',function(req,res) {
+  var params={screen_name:req.query.nm}
+  client.get('favorites/list', params,function(error, tweets, respo) {
+    if(!error) {
+      res.render('index',{tw:tweets});
+    } else {
+      console.log(error)
+    }
+  });
+});
 
 console.log("listen 3000")
 app.listen(3000);

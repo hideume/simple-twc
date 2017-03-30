@@ -1,9 +1,10 @@
 html
   include includes/head.pug
-  #11 
-  |--- member <a href=#{myhttp+"/fr?nm="+user+"&next="+mem.previous_cursor}>back</a>
-  | <a href=#{myhttp+"/fr?nm="+user+"&next="+mem.next_cursor}>next</a>
   -var xx = mem.users
+  #11 
+  |--- member <a href=#{myhttp+"/fr?nm="+user+"&next="+mem.previous_cursor+"&no="+(no-xx.length)}>back</a>
+  | no = #{no}
+  |<a href=#{myhttp+"/fr?nm="+user+"&next="+mem.next_cursor+"&no="+xx.length}>next</a>
   table
     thead
       tr
@@ -13,7 +14,7 @@ html
     tbody
       - for (var i=0;i<xx.length;i++) {
           tr
-            td #{i}
+            td #{i+parseInt(no)}
             -var sc = mem.users[i].screen_name
             td <a href=#{myhttp+"/tl?nm="+sc}>#{sc}</a>
             td <a href=#{myhttp+"/us?nm="+sc}>#{xx[i].name}</a>

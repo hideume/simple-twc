@@ -5,7 +5,7 @@ html
     -var rt = lm.resources.statuses["/statuses/retweets/:id"]
     -var sc = lm.resources.search["/search/tweets"]
     -var c1 = lm.resources.friends["/friends/list"]
-    //-var c2 = lm.resources.users["/users/contributees"]
+    //-var c2 = lm.resources.favorites["favorites/list"]
     #11 ---- limit status ---- <br>
     table
       tbody
@@ -34,3 +34,8 @@ html
           td #{c1.limit}
           td #{c1.remaining}
           td #{new Date(c1.reset*1000).toLocaleString().substr(11,8)} 
+        //tr
+        //  td fevoriate/list = 
+        //  td #{c2.limit}
+        //  td #{c2.remaining}
+        //  td #{new Date(c2.reset*1000).toLocaleString().substr(11,8)} 

@@ -1,6 +1,7 @@
 //- user show
 html
  include includes/head.pug
+ #11 --- user --
  table
    tr
      td
@@ -14,8 +15,8 @@ html
        |コメント:#{user[0].description}<br>
        |following:#{user[0].following}
        |tweets  :<a href=#{myhttp+"/tl?nm="+sc}>#{user[0].statuses_count}</a>
-       |favourites:#{user[0].favourites_count}
-       |follow  :<a href=#{myhttp+"/fr?nm="+sc}>#{user[0].friends_count}</a>
+       |favourites:<a href=#{myhttp+"/fv?nm="+sc}>#{user[0].favourites_count}</a>
+       |follow  :<a href=#{myhttp+"/fr?nm="+sc+"&no=0"}>#{user[0].friends_count}</a>
        |follower:#{user[0].followers_count}
        - var sc = user[0].screen_name
        |listed  :<a href=#{myhttp+"/listed?nm="+sc}>#{user[0].listed_count}</a>
