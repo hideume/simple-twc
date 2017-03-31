@@ -134,6 +134,19 @@ app.get('/fr',function(req,res) {
   });
 });
 
+//favorites
+app.get('/fv',function(req,res) {
+  var params={screen_name:req.query.nm}
+  client.get('favorites/list', params,function(error, tweets, respo) {
+    if(!error) {
+      res.render('index',{tw:tweets});
+    } else {
+      console.log(error)
+    }
+  });
+});
+
+/////////post
 //tweet
 app.get('/tw',function(req,res) {
   var params={status:req.query.q}
@@ -143,15 +156,21 @@ app.get('/tw',function(req,res) {
     }
   });
 });
-
-//tweet
-app.get('/fv',function(req,res) {
+//follow
+app.get('/pflc',function(req,res) {
   var params={screen_name:req.query.nm}
-  client.get('favorites/list', params,function(error, tweets, respo) {
-    if(!error) {
-      res.render('index',{tw:tweets});
-    } else {
-      console.log(error)
+  client.post('friendships/create', params,function(error, friends, respo) {
+    if(error) {
+      console.log('err')
+    }
+  });
+});
+//unfollow
+app.get('/pfld',function(req,res) {
+  var params={screen_name:req.query.nm}
+  client.post('friendships/destroy', params,function(error, friends, respo) {
+    if(error) {
+      console.log('err')
     }
   });
 });

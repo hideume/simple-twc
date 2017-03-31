@@ -13,8 +13,12 @@ html
        |location:#{user[0].location}<br>
        |start at:#{tm}<br>
        |コメント:#{user[0].description}<br>
-       |following:#{user[0].following}
-       |tweets  :<a href=#{myhttp+"/tl?nm="+sc}>#{user[0].statuses_count}</a>
+       if user[0].following
+          | follwing:<a href=#{myhttp+"/pfld?nm="+sc}> #{user[0].following}</a>
+       else
+          | follwing:<a href=#{myhttp+"/pflc?nm="+sc}>#{user[0].following}</a>
+       //- var a = "follwing:<a href="+myhttp+"/pfl?nm="+sc">"+user[0].following+"</a>"
+       | tweets  :<a href=#{myhttp+"/tl?nm="+sc}>#{user[0].statuses_count}</a>
        |favourites:<a href=#{myhttp+"/fv?nm="+sc}>#{user[0].favourites_count}</a>
        |follow  :<a href=#{myhttp+"/fr?nm="+sc+"&no=0"}>#{user[0].friends_count}</a>
        |follower:#{user[0].followers_count}
@@ -42,4 +46,5 @@ html
           - var sc = list[i].user.screen_name
           - var slg = list[i].slug
           td <a href=#{myhttp+"/listmember?nm="+sc+"&slug="+slg}>#{mc}<a>
+          td #{list[i].mode}
     - }
