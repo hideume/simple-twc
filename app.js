@@ -42,7 +42,11 @@ app.get('/tl',function(req,res) {
   var params = {screen_name: req.query.nm,count:30};
   client.get('statuses/user_timeline', params, function(error, tweets, respo) {
     if(!error) {
+      if(!req.query.sp){
         res.render('index',{tw:tweets});
+      } else {
+        res.render('timeindex',{tw:tweets,name:req.query.nm});
+      }
     }else{
       console.log(error)
     }
@@ -118,7 +122,7 @@ app.get('/tr',function(req,res) {
   });
 });
 
-//trend
+//friends/list
 app.get('/fr',function(req,res) {
   if(req.query.next) {
     params = {screen_name:req.query.nm,cursor:req.query.next,count:50}
@@ -169,6 +173,15 @@ app.get('/pflc',function(req,res) {
 app.get('/pfld',function(req,res) {
   var params={screen_name:req.query.nm}
   client.post('friendships/destroy', params,function(error, friends, respo) {
+    if(error) {
+      console.log('err')
+    }
+  });
+});
+//retweet
+app.get('/prt',function(req,res) {
+  var params={}
+  client.post('statuses/retweet/'+req.query.id, params,function(error, friends, respo) {
     if(error) {
       console.log('err')
     }

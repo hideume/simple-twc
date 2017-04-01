@@ -1,0 +1,34 @@
+//- user&home time
+//-
+html
+  include includes/head.pug
+  #11 --- simple time line <a href=#{myhttp+"/tl?nm="+name}>nomal</a>
+  table(border=1 style="border-collapse: collapse;")
+    tbody
+        - for (var i=0 ;i<tw.length ; i++) {
+            tr
+                - var sc = tw[i].user.screen_name
+                - var tm = new Date(tw[i].created_at).toLocaleString("ja-JP")
+                td #{i} 
+                td --#{tm}
+                if tw[i].text.indexOf('RT') == 0
+                    -var idx = tw[i].text.indexOf(':');
+                    -var sc2 = tw[i].text.substr(4,idx-4);
+                    -var etxt = tw[i].text.substr(idx,40-idx)
+                    td  RT @<a href=#{myhttp+"/us?nm="+sc2}>#{sc2}</a> #{etxt}
+                else
+                    td  #{tw[i].text.substr(0,40)}
+                td 
+                    if tw[i].retweeted_status
+                        - var id = tw[i].retweeted_status.id_str
+                        <a href=#{myhttp+"/rt?rt="+id}>re:#{tw[i].retweet_count}</a>
+
+        -  }
+
+  script
+   - function twtxt(txt) {
+   - if(txt.indexOf('RT')==0) {
+   - return txt.indexOf(':');    
+   - }else{
+   - return -1}
+   - }
