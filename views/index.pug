@@ -16,5 +16,6 @@ html
                     if tw[i].retweeted_status
                        - var id = tw[i].retweeted_status.id_str
                        <a href=#{myhttp+"/rt?rt="+id}> re:#{tw[i].retweet_count}</a>&nbsp
-                    | <a href=#{myhttp+"/prt?id="+idm}>post re</a>
+                    | <a href=#{myhttp+"/prt?id="+idm}>retweet</a>
         -  }
+

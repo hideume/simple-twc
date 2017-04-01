@@ -30,6 +30,7 @@ node app.js
 とりあえず
 <pre>
  git clone https://github.com/hideume/simple-twc
+ cd simple-twc
  npm install
  node app.js
 </pre>

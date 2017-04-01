@@ -154,9 +154,10 @@ app.get('/fv',function(req,res) {
 //tweet
 app.get('/tw',function(req,res) {
   var params={status:req.query.q}
-  client.post('statuses/update', params,function(error, friends, respo) {
+  client.post('statuses/update', params,function(error, friends) {
     if(error) {
-      console.log('err')
+      console.log(error)
+    }else{
     }
   });
 });
@@ -166,7 +167,7 @@ app.get('/pflc',function(req,res) {
   client.post('friendships/create', params,function(error, friends, respo) {
     if(error) {
       console.log('err')
-    }
+    }else{}
   });
 });
 //unfollow
@@ -175,7 +176,7 @@ app.get('/pfld',function(req,res) {
   client.post('friendships/destroy', params,function(error, friends, respo) {
     if(error) {
       console.log('err')
-    }
+    }else{}
   });
 });
 //retweet
@@ -184,7 +185,7 @@ app.get('/prt',function(req,res) {
   client.post('statuses/retweet/'+req.query.id, params,function(error, friends, respo) {
     if(error) {
       console.log('err')
-    }
+    }else{}
   });
 });
 

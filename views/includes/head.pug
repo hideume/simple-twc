@@ -1,7 +1,8 @@
 - var myhttp = "http://localhost:3000"
 #top
  | simple-twitter-client 
- | #{process.env.TWITTER_SCREEN_NAME}
+ - var mysc = process.env.TWITTER_SCREEN_NAME
+ |<a href=#{myhttp+"/us?nm="+mysc}>#{mysc}</a>
  |<a href=#{myhttp}>home</a>
  |<a href=#{myhttp+"/lm"}>limit</a>
  |<a href=#{myhttp+"/tr"}>trend</a>

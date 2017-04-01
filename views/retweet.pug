@@ -16,9 +16,9 @@ html
       - for (var i=0;i<tw.length;i++) {
           tr
             td #{i}
-            td #{new Date(tw[i].created_at).toLocaleString()}
+            td #{new Date(tw[i].created_at).toLocaleString().substr(5)}
             - var sc = tw[i].user.screen_name
-            td <a href="http://localhost:3000/tl?nm=#{sc}">#{sc}</a>
+            td <a href="http://localhost:3000/tl?nm=#{sc}&sp=1">#{sc}</a>
             td <a href="http://localhost:3000/us?nm=#{sc}">#{tw[i].user.name}</a>
             td #{tw[i].user.location.substr(0,15)}
       - }
