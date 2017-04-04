@@ -158,6 +158,7 @@ app.get('/tw',function(req,res) {
     if(error) {
       console.log(error)
     }else{
+      res.redirect('back');
     }
   });
 });
@@ -167,7 +168,9 @@ app.get('/pflc',function(req,res) {
   client.post('friendships/create', params,function(error, friends, respo) {
     if(error) {
       console.log('err')
-    }else{}
+    }else{
+      res.redirect('back');
+    }
   });
 });
 //unfollow
@@ -175,8 +178,10 @@ app.get('/pfld',function(req,res) {
   var params={screen_name:req.query.nm}
   client.post('friendships/destroy', params,function(error, friends, respo) {
     if(error) {
-      console.log('err')
-    }else{}
+      console.log(error)
+    }else{
+      res.redirect('back');
+    }
   });
 });
 //retweet
@@ -184,8 +189,10 @@ app.get('/prt',function(req,res) {
   var params={}
   client.post('statuses/retweet/'+req.query.id, params,function(error, friends, respo) {
     if(error) {
-      console.log('err')
-    }else{}
+      console.log(error)
+    }else{
+      res.redirect('back');
+    }
   });
 });
 

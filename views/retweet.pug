@@ -3,14 +3,20 @@ html
   -var t1 = new Date(tw[0].created_at)
   -var t2 = new Date(tw[tw.length-1].created_at)
   -var twecount = tw.length*60*60*1000/(t1-t2)
-  #11 retweet status ---- #{(" "+twecount).substr(0,8)} tweet/時間 
+  -var twc = tw[0].retweeted_status.retweet_count
+  -var twt = tw[0].retweeted_status.text.substr(0,20)
+  -var twu = tw[0].retweeted_status.user.screen_name
+  #11 retweet status ----count=#{twc} #{(" "+twecount).substr(0,8)} tweet/時間
+      | #{twt}
+      | <a href=#{myhttp+"/tl?nm="+twu}>#{twu}</a>
   table
     thead
       tr
         td no
         td Date
         td screen_name
-        td name          
+        td name
+        td tweetes          
         td location          
     tbody
       - for (var i=0;i<tw.length;i++) {
@@ -20,5 +26,6 @@ html
             - var sc = tw[i].user.screen_name
             td <a href="http://localhost:3000/tl?nm=#{sc}&sp=1">#{sc}</a>
             td <a href="http://localhost:3000/us?nm=#{sc}">#{tw[i].user.name}</a>
+            td #{tw[i].user.statuses_count}
             td #{tw[i].user.location.substr(0,15)}
       - }
