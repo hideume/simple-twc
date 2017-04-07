@@ -19,9 +19,10 @@ html
                     td  RT @<a href=#{myhttp+"/us?nm="+sc2}>#{sc2}</a> #{etxt}
                 else
                     td  #{tw[i].text.substr(0,45)}
-                td 
-                    if tw[i].retweeted_status
-                        - var id = tw[i].retweeted_status.id_str
-                        <a href=#{myhttp+"/rt?rt="+id}>re:#{tw[i].retweet_count}</a>
-
+                if tw[i].retweeted_status
+                    - var id = tw[i].retweeted_status.id_str
+                    td <a href=#{myhttp+"/rt?rt="+id}>re:#{tw[i].retweet_count}</a>
+                else
+                    - var id = tw[i].id_str
+                    td <a href=#{myhttp+"/rt?rt="+id}>re:#{tw[i].retweet_count}</a>
         -  }

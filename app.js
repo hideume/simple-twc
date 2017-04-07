@@ -20,7 +20,7 @@ app.get('/',function(req,res) {
   var params = {screen_name: process.env.TWITTER_SCREEN_NAME,count:30};
   client.get('statuses/home_timeline', params, function(error, tweets, respo) {
     if(!error) {
-        res.render('index',{tw:tweets});
+        res.render('index',{tw:tweets,name:process.env.TWITTER_SCREEN_NAME});
     }
   });
 });
@@ -43,7 +43,7 @@ app.get('/tl',function(req,res) {
   client.get('statuses/user_timeline', params, function(error, tweets, respo) {
     if(!error) {
       if(!req.query.sp){
-        res.render('index',{tw:tweets});
+        res.render('index',{tw:tweets,name:req.query.nm});
       } else {
         res.render('timeindex',{tw:tweets,name:req.query.nm});
       }
@@ -90,7 +90,7 @@ app.get('/listed',function(req,res) {
 
 //search
 app.get('/sc',function(req,res) {
-  var params = {q:req.query.q,count:50};
+  var params = {q:req.query.q,count:50,lang:"ja"};
   client.get('search/tweets', params, function(error, tweets, respo) {
     if(!error) {
         res.render('index',{tw:tweets.statuses});

@@ -6,8 +6,10 @@ html
   -var twc = tw[0].retweeted_status.retweet_count
   -var twt = tw[0].retweeted_status.text.substr(0,20)
   -var twu = tw[0].retweeted_status.user.screen_name
-  #11 retweet status ----count=#{twc} #{(" "+twecount).substr(0,8)} tweet/時間
-      | #{twt}
+  -var t3 = new Date(tw[0].retweeted_status.created_at)
+  -var t4 = new Date(tw[tw.length-1].created_at)
+  #11 retweet status ----#{(" "+twecount).substr(0,8)} tweet/時間
+      | count=#{twc} #{twt} #{t3.toLocaleString().substr(5)}
       | <a href=#{myhttp+"/tl?nm="+twu}>#{twu}</a>
   table
     thead
