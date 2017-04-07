@@ -18,7 +18,8 @@ html
         td Date
         td screen_name
         td name
-        td tweetes          
+        td tweetes
+        td follower          
         td location          
     tbody
       - for (var i=0;i<tw.length;i++) {
@@ -29,5 +30,6 @@ html
             td <a href="http://localhost:3000/tl?nm=#{sc}&sp=1">#{sc}</a>
             td <a href="http://localhost:3000/us?nm=#{sc}">#{tw[i].user.name}</a>
             td #{tw[i].user.statuses_count}
+            td #{tw[i].user.followers_count}
             td #{tw[i].user.location.substr(0,15)}
       - }

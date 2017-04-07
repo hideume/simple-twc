@@ -1,7 +1,9 @@
 # 予定
 emoji,style改善,androido化
+
+# v0.7.0
 user評価,list支援
-# v0.6.0
+# v0.6.0 4/7
 RT 元tweet表示,html表示
 # v0.5.0 4/1
 post=retweet,follow on/off,list time-line

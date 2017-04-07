@@ -195,6 +195,17 @@ app.get('/prt',function(req,res) {
     }
   });
 });
+//retweet
+app.get('/pladd',function(req,res) {
+  var params={screen_name:req.query.nm,slug:"mark",owner_screen_name:process.env.TWITTER_SCREEN_NAME}
+  client.post('lists/members/create/', params,function(error, friends, respo) {
+    if(error) {
+      console.log(error)
+    }else{
+      res.redirect('back');
+    }
+  });
+});
 
 console.log("listen 3000")
 app.listen(3000);
