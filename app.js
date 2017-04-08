@@ -17,7 +17,7 @@ var client  = new Twitter({
 
 //index
 app.get('/',function(req,res) {
-  var params = {screen_name: process.env.TWITTER_SCREEN_NAME,count:30};
+  var params = {screen_name: process.env.TWITTER_SCREEN_NAME,count:50};
   client.get('statuses/home_timeline', params, function(error, tweets, respo) {
     if(!error) {
         res.render('index',{tw:tweets,name:process.env.TWITTER_SCREEN_NAME});
@@ -39,7 +39,7 @@ app.get('/us',function(req,res) {
 
 //user timeline
 app.get('/tl',function(req,res) {
-  var params = {screen_name: req.query.nm,count:30};
+  var params = {screen_name: req.query.nm,count:50};
   client.get('statuses/user_timeline', params, function(error, tweets, respo) {
     if(!error) {
       if(!req.query.sp){

@@ -15,10 +15,10 @@ html
                 if tw[i].text.indexOf('RT') == 0
                     -var idx = tw[i].text.indexOf(':');
                     -var sc2 = tw[i].text.substr(4,idx-4);
-                    -var etxt = tw[i].text.substr(idx,45-idx)
+                    -var etxt = tw[i].text.substr(idx,55-idx)
                     td  RT @<a href=#{myhttp+"/us?nm="+sc2}>#{sc2}</a> #{etxt}
                 else
-                    td  #{tw[i].text.substr(0,45)}
+                    td  #{tw[i].text.substr(0,55)}
                 if tw[i].retweeted_status
                     - var id = tw[i].retweeted_status.id_str
                     td <a href=#{myhttp+"/rt?rt="+id}>re:#{tw[i].retweet_count}</a>
