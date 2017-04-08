@@ -1,42 +1,48 @@
 //- user&home time
 //-
 html
-  include includes/head.pug
-  #11 --- time line <a href=#{myhttp+"/tl?nm="+name+"&sp=1"}>to time表示</a>
-  table(border=1 style="border-collapse: collapse;")
-    tbody
-        - for (var i=0 ;i<tw.length ; i++) {
-            tr
-                - var sc = tw[i].user.screen_name
-                - var tm = new Date(tw[i].created_at).toLocaleString("ja-JP")
-                td(style="vertical-align:top;") <img src=#{tw[i].user.profile_image_url} width=32 height=32>
-                - var idm = tw[i].id_str
-                td #{i} --#{tm} @<a href=#{myhttp+"/tl?nm="+sc+'&sp=1'}>#{sc}</a> <a href=#{myhttp+"/us?nm="+sc}>#{tw[i].user.name}</a><br>
-                    !=  linktxt(tw[i].text)
-                    |&nbsp
-                    if tw[i].retweeted_status
-                       - var id = tw[i].retweeted_status.id_str
-                       <a href=#{myhttp+"/rt?rt="+id}> re:#{tw[i].retweet_count}</a>&nbsp
-                    | <a href=#{myhttp+"/prt?id="+idm}>retweet</a>
-                td
-                  != photo(tw[i].extended_entities)
-        -  }
+  head
+  body
+    include includes/head.pug
+    link(rel="stylesheet",type="text/css",href=myhttp+"/css/main.css")
+    //style(src="/css/main.css")
+    #11 --- time line <a href=#{myhttp+"/tl?nm="+name+"&sp=1"}>to time表示</a>
+    //table(border=1 style="border-collapse: collapse;")
+    table(class="type02")
+      tbody
+          - for (var i=0 ;i<tw.length ; i++) {
+              tr
+                  - var sc = tw[i].user.screen_name
+                  - var tm = new Date(tw[i].created_at).toLocaleString("ja-JP")
+                  //td(style="vertical-align:top;") <img src=#{tw[i].user.profile_image_url} width=32 height=32>
+                  td <img src=#{tw[i].user.profile_image_url} width=32 height=32>
+                  - var idm = tw[i].id_str
+                  td #{i} --#{tm} @<a href=#{myhttp+"/tl?nm="+sc+'&sp=1'}>#{sc}</a> <a href=#{myhttp+"/us?nm="+sc}>#{tw[i].user.name}</a><br>
+                      !=  linktxt(tw[i].text)
+                      |&nbsp
+                      if tw[i].retweeted_status
+                        - var id = tw[i].retweeted_status.id_str
+                        <a href=#{myhttp+"/rt?rt="+id}> re:#{tw[i].retweet_count}</a>&nbsp
+                      | <a href=#{myhttp+"/prt?id="+idm}>retweet</a>
+                  td(class="type02")
+                    != photo(tw[i].extended_entities)
+          -  }
 
-  script
-    - function linktxt(txt,urls) {
-    -  text2 = txt.replace(/(https:[/.\w]+)/g,"<a href='$1' target='_blank'>$1</a>")
-    -  if (urls!=undefine && urls.media!=undefine) { 
-    -     text2 = text2+"<img src="+urls.media[0].media_url_https+" width=100,height=50>" 
-    -  }
-    -  return text2               
-    -}
-  script
-    - function photo(urls) {
-    -  text2=""    
-    -  if (urls!=undefine && urls.media!=undefine) { 
-    -     text2 = text2+"<img src="+urls.media[0].media_url_https+" width=100,height=50>" 
-    -     text2 = "<a href="+urls.media[0].media_url_https+">"+text2+"</a>" 
-    -  }
-    -  return text2               
-    -}
+    script
+      - function linktxt(txt,urls) {
+      -  text2 = txt.replace(/(https:[/.\w]+)/g,"<a href='$1' target='_blank'>$1</a>")
+      -  if (urls!=undefine && urls.media!=undefine) { 
+      -     text2 = text2+"<img src="+urls.media[0].media_url_https+" width=100,height=50>" 
+      -  }
+      -  return text2               
+      -}
+    script
+      - function photo(urls) {
+      -  text2=""    
+      -  if (urls!=undefine && urls.media!=undefine) { 
+      -     text2 = text2+"<img src="+urls.media[0].media_url_https+" width=100>" 
+      -     text2 = "<a href="+urls.media[0].media_url_https+" target='_blank'>"+text2+"</a>" 
+      -  }
+      -  return text2               
+      -}
   

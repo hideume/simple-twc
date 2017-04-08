@@ -5,7 +5,8 @@ html
     -var rt = lm.resources.statuses["/statuses/retweets/:id"]
     -var sc = lm.resources.search["/search/tweets"]
     -var c1 = lm.resources.friends["/friends/list"]
-    -var c2 = lm.resources.lists["/lists/list"]
+    -var l1 = lm.resources.lists["/lists/members"]
+    -var l2 = lm.resources.lists["/lists/list"]
     #11 ---- limit status ---- <br>
     table
       tbody
@@ -35,7 +36,12 @@ html
           td #{c1.remaining}
           td #{new Date(c1.reset*1000).toLocaleString().substr(11,8)} 
         tr
+          td lists/menbers = 
+          td #{l1.limit}
+          td #{l1.remaining}
+          td #{new Date(l1.reset*1000).toLocaleString().substr(11,8)} 
+        tr
           td lists/list = 
-          td #{c2.limit}
-          td #{c2.remaining}
-          td #{new Date(c2.reset*1000).toLocaleString().substr(11,8)} 
+          td #{l2.limit}
+          td #{l2.remaining}
+          td #{new Date(l2.reset*1000).toLocaleString().substr(11,8)} 
