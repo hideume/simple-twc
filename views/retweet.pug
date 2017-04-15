@@ -11,16 +11,16 @@ html
   #11 retweet status ----#{(" "+twecount).substr(0,8)} tweet/時間
       | count=#{twc} #{twt} #{t3.toLocaleString().substr(5)}
       | <a href=#{myhttp+"/tl?nm="+twu}>#{twu}</a>
-  table
+  table(class="type02")
     thead
       tr
-        td no
-        td Date
-        td screen_name
-        td name
-        td tweetes
-        td follower          
-        td location          
+        th no
+        th Date
+        th screen_name
+        th name
+        th tweetes
+        th follower          
+        th location          
     tbody
       - for (var i=0;i<tw.length;i++) {
           tr

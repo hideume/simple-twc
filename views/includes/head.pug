@@ -1,5 +1,6 @@
 - var myhttp = "http://localhost:3000"
-#top
+link(rel="stylesheet",type="text/css",href=myhttp+"/css/main.css")
+#header
  | simple-twitter-client 
  - var mysc = process.env.TWITTER_SCREEN_NAME
  |<a href=#{myhttp+"/us?nm="+mysc}>#{mysc}</a>
@@ -7,10 +8,13 @@
  |<a href=#{myhttp+"/lm"}>limit</a>
  |<a href=#{myhttp+"/tr"}>trend</a>
  | _____________________________________ v0.6.0 at 2017/4/7 <br>
-input(type='text' size=60 id="idtext") 
-input(type='button' onclick="clicked()" value="検索" width=60 height=20) 
-input(type='hidden' size=2)
-input(type='button' onclick="tweet()" value="ｔｗ" width=60 height=20) 
+ input(type='text' size=100 id="idtext") 
+ input(type='button' onclick="clicked()" value="検索" width=60 height=20) 
+ input(type='hidden' size=2)
+ input(type='button' onclick="tweet()" value="ｔｗ" width=60 height=20)
+#header2
+ <br>
+ <br> 
 script
   |function clicked() {
   | console.log("clicked!")

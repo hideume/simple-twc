@@ -5,12 +5,12 @@ html
   |--- member <a href=#{myhttp+"/fr?nm="+user+"&next="+mem.previous_cursor+"&no="+(no-xx.length)}>back</a>
   | no = #{no}
   |<a href=#{myhttp+"/fr?nm="+user+"&next="+mem.next_cursor+"&no="+xx.length}>next</a>
-  table
+  table(class="type02")
     thead
       tr
-        td no
-        td screen_name
-        td name          
+        th no
+        th screen_name
+        th name          
     tbody
       - for (var i=0;i<xx.length;i++) {
           tr

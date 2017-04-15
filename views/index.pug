@@ -4,10 +4,8 @@ html
   head
   body
     include includes/head.pug
-    link(rel="stylesheet",type="text/css",href=myhttp+"/css/main.css")
-    //style(src="/css/main.css")
+    //link(rel="stylesheet",type="text/css",href=myhttp+"/css/main.css")
     #11 --- time line <a href=#{myhttp+"/tl?nm="+name+"&sp=1"}>to time表示</a>
-    //table(border=1 style="border-collapse: collapse;")
     table(class="type02")
       tbody
           - for (var i=0 ;i<tw.length ; i++) {

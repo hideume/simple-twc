@@ -4,8 +4,9 @@ table.type02 {
     border-spacing: 0;
     text-align: left;
     line-height: 1.2;
-    border-top: 1px solid #ccc;
-    border-left: 1px solid #ccc;
+    border-top: 3px solid #0cc;
+    border-left: 3px solid #0cc;
+    overflow: auto;
 }
 table.type02 th {
     /*width: 150px;
@@ -14,14 +15,23 @@ table.type02 th {
     vertical-align: top;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
-    border-top: 1px solid #000;
-    border-left: 1px solid #000;
+    border-top: 1px solid #0aa;
+    border-left: 1px solid #0aa;
     background: #eee;
 }
 table.type02 td {
     /*width: 350px;*/
     padding: 3px;
     vertical-align: top;
-    border-right: 1px solid #aaa;
-    border-bottom: 1px solid #aaa;
+    border-right: 1px solid #0aa;
+    border-bottom: 1px solid #0aa;
+}
+
+#header {
+    background: #0cc;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 4px;
+    height: 50px; 
 }

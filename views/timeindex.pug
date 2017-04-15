@@ -4,7 +4,7 @@ html
   include includes/head.pug
   #11 --- simple time line <a href=#{myhttp+"/us?nm="+name}>#{name}</a>
     |&nbsp<a href=#{myhttp+"/tl?nm="+name}>to text表示</a>
-  table(border=1 style="border-collapse: collapse;")
+  table(class="type02")
     tbody
         - for (var i=0 ;i<tw.length ; i++) {
             tr
