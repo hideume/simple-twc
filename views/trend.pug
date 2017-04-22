@@ -1,15 +1,17 @@
 html
   include includes/head.pug
   #11 ---- trend --
-  table
+  table(class="type02")
     thead
       tr
-        td no
-        td name          
+        th no
+        th name
+        th volume          
     tbody
       - for (var i=0;i<tr.length;i++) {
           tr
             td #{i}
             -var txt = decodeURIComponent(tr[i].query)
             td <a href=#{myhttp+'/sc?q='+tr[i].query}>#{txt}</a>
+            td #{tr[i].tweet_volume}
       - }

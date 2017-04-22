@@ -15,20 +15,20 @@ table.type02 th {
     vertical-align: top;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
-    border-top: 1px solid #0aa;
-    border-left: 1px solid #0aa;
     background: #eee;
 }
 table.type02 td {
     /*width: 350px;*/
     padding: 3px;
     vertical-align: top;
-    border-right: 1px solid #0aa;
-    border-bottom: 1px solid #0aa;
+    border-right: 1px solid #0cc;
+    border-bottom: 1px solid #0cc;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
 }
 
 #header {
-    background: #0cc;
+    background: #cff;
     position: fixed;
     top: 0;
     width: 100%;

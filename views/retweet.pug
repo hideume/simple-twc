@@ -8,7 +8,14 @@ html
   -var twu = tw[0].retweeted_status.user.screen_name
   -var t3 = new Date(tw[0].retweeted_status.created_at)
   -var t4 = new Date(tw[tw.length-1].created_at)
-  #11 retweet status ----#{(" "+twecount).substr(0,8)} tweet/時間
+  #11 retweet status ----
+      if twecount >=1000
+        |<font color="red" >#{(" "+twecount).substr(0,8)}</font>
+      else if twecount >=500
+        |<font color="orange">#{(" "+twecount).substr(0,8)}</font>
+      else
+        | #{(" "+twecount).substr(0,8)}
+      |tweet/時間
       | count=#{twc} #{twt} #{t3.toLocaleString().substr(5)}
       | <a href=#{myhttp+"/tl?nm="+twu}>#{twu}</a>
   table(class="type02")

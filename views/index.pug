@@ -16,7 +16,7 @@ html
                   td <img src=#{tw[i].user.profile_image_url} width=32 height=32>
                   - var idm = tw[i].id_str
                   td #{i} --#{tm} @<a href=#{myhttp+"/tl?nm="+sc+'&sp=1'}>#{sc}</a> <a href=#{myhttp+"/us?nm="+sc}>#{tw[i].user.name}</a><br>
-                      !=  linktxt(tw[i].text)
+                      !=  linktxt(tw[i].text,myhttp,myhttp)
                       |&nbsp
                       if tw[i].retweeted_status
                         - var id = tw[i].retweeted_status.id_str
@@ -27,8 +27,9 @@ html
           -  }
 
     script
-      - function linktxt(txt,urls) {
+      - function linktxt(txt,urls,myhttp) {
       -  text2 = txt.replace(/(https:[/.\w]+)/g,"<a href='$1' target='_blank'>$1</a>")
+      -  text2 = text2.replace(/@(\w+):/,"<a href="+myhttp+"/us?nm=$1>@$1:</a>")
       -  if (urls!=undefine && urls.media!=undefine) { 
       -     text2 = text2+"<img src="+urls.media[0].media_url_https+" width=100,height=50>" 
       -  }
