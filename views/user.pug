@@ -36,7 +36,8 @@ html
        th screen_name
        th name
        th create_at
-       th menber
+       th member
+       th subscriber
        th access
    tbody
     - for (var i=0;i<list.length;i++) {
@@ -50,5 +51,6 @@ html
           - var sc = list[i].user.screen_name
           - var slg = list[i].slug
           td <a href=#{myhttp+"/listmember?nm="+sc+"&slug="+slg}>#{mc}<a>
+          td #{list[i].subscriber_count}
           td #{list[i].mode}
     - }

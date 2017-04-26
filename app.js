@@ -76,6 +76,19 @@ app.get('/rt',function(req,res) {
   });
 });
 
+//retweet graph
+app.get('/rtg',function(req,res) {
+  var params = {trim_user:false,count:200};
+  var ids = req.query.rt
+  client.get('statuses/retweets/'+ids, params, function(error, stt, respo) {
+    if(!error) {
+        res.render('retweetgraph',{tw:stt,id:ids});
+    }else{
+      console.log(error)
+    }
+  });
+});
+
 //listed
 app.get('/listed',function(req,res) {
   var params = {screen_name:req.query.nm,count:50};

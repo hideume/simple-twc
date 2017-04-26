@@ -8,6 +8,7 @@ html
   -var twu = tw[0].retweeted_status.user.screen_name
   -var t3 = new Date(tw[0].retweeted_status.created_at)
   -var t4 = new Date(tw[tw.length-1].created_at)
+  -var id = tw[0].retweeted_status.id_str
   #11 retweet status ----
       if twecount >=1000
         |<font color="red" >#{(" "+twecount).substr(0,8)}</font>
@@ -18,6 +19,7 @@ html
       |tweet/時間
       | count=#{twc} #{twt} #{t3.toLocaleString().substr(5)}
       | <a href=#{myhttp+"/tl?nm="+twu}>#{twu}</a>
+      | <a href=#{myhttp+"/rtg?rt="+id}>graph</a>
   table(class="type02")
     thead
       tr
