@@ -16,6 +16,6 @@ html
             - var slg = tw.lists[i].slug
             td <a href=#{myhttp+"/us?nm="+sc}>#{sc}</a>
             td #{tw.lists[i].name}
-            td <a href=#{myhttp+"/listmember?nm="+sc+"&slug="+slg}>#{mc}</a>         
+            td <a href=#{myhttp+"/listmember?nm="+sc+"&slug="+slg+"&cursor=-1"}>#{mc}</a>         
             td #{tw.lists[i].mode}         
       - }

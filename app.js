@@ -115,10 +115,13 @@ app.get('/sc',function(req,res) {
 
 //listmenber
 app.get('/listmember',function(req,res) {
-  var params = {owner_screen_name:req.query.nm,slug:req.query.slug};
+  var params = {owner_screen_name:req.query.nm,slug:req.query.slug,cursor:req.query.cursor};
   client.get('lists/members', params, function(error, member, respo) {
     if(!error) {
-        res.render('member',{mem:member.users});
+        res.render('member_list',{mem:member.users,
+          next:member.next_cursor,pre:member.previous_cursor,
+          sn:req.query.nm,slug:req.query.slug,cnt:req.query.cnt
+        });
     }else{
       console.log(error)
     }
