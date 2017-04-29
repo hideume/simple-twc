@@ -147,7 +147,7 @@ app.get('/fr',function(req,res) {
   }
   client.get('friends/list', params, function(error, friends, respo) {
     if(!error) {
-        res.render('member_n',{mem:friends,user:req.query.nm,no:req.query.no});
+        res.render('member_n',{mm:friends,nm:req.query.nm,cnt:req.query.cnt});
     }else{
       console.log(error);
     }

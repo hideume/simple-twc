@@ -1,21 +1,9 @@
 html
   include includes/head.pug
-  -var xx = mem.users
+  -var mem = mm.users
+  -var icnt = parseInt(cnt)
   #11 
-  |--- member_n <a href=#{myhttp+"/fr?nm="+user+"&next="+mem.previous_cursor+"&no="+(no-xx.length)}>back</a>
+  |--- member_n <a href=#{myhttp+"/fr?nm="+nm+"&next="+mm.previous_cursor+"&cnt="+(icnt-mem.length)}>back</a>
   | no = #{no}
-  |<a href=#{myhttp+"/fr?nm="+user+"&next="+mem.next_cursor+"&no="+xx.length}>next</a>
-  table(class="type02")
-    thead
-      tr
-        th no
-        th screen_name
-        th name          
-    tbody
-      - for (var i=0;i<xx.length;i++) {
-          tr
-            td #{i+parseInt(no)}
-            -var sc = mem.users[i].screen_name
-            td <a href=#{myhttp+"/tl?nm="+sc}>#{sc}</a>
-            td <a href=#{myhttp+"/us?nm="+sc}>#{xx[i].name}</a>
-      - }
+  |<a href=#{myhttp+"/fr?nm="+nm+"&next="+mm.next_cursor+"&cnt="+(icnt+mem.length)}>next</a>
+  include includes/membertable.pug

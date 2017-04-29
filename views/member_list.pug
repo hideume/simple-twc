@@ -4,27 +4,4 @@ html
    - var icnt = parseInt(cnt)
    |<a href=#{myhttp+"/listmember?nm="+sn+"&slug="+slug+"&cursor="+pre+"&cnt="+(icnt-20)}>pre</a>  
    |<a href=#{myhttp+"/listmember?nm="+sn+"&slug="+slug+"&cursor="+next+"&cnt="+(icnt+20)}>next</a>
-  table(class="type02")
-    thead
-      tr
-        th no
-        th screen_name
-        th name
-        th create
-        th tweets
-        th follow
-        th follower
-        th listed          
-    tbody
-      - for (var i=0;i<mem.length;i++) {
-          tr
-            td #{i+icnt}
-            -var sc = mem[i].screen_name
-            td <a href=#{myhttp+"/tl?nm="+sc}>#{sc}</a>
-            td <a href=#{myhttp+"/us?nm="+sc}>#{mem[i].name}</a>
-            td #{new Date(mem[i].created_at).toLocaleString().substr(0,10)}
-            td #{mem[i].statuses_count}
-            td #{mem[i].friends_count}
-            td #{mem[i].followers_count}
-            td #{mem[i].listed_count}
-      - }
+  include includes/membertable.pug

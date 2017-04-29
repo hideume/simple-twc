@@ -19,7 +19,7 @@ html
        //- var a = "follwing:<a href="+myhttp+"/pfl?nm="+sc">"+user[0].following+"</a>"
        | tweets  :<a href=#{myhttp+"/tl?nm="+sc+"&sp=1"}>#{user[0].statuses_count}</a>
        |favourites:<a href=#{myhttp+"/fv?nm="+sc}>#{user[0].favourites_count}</a>
-       |follow  :<a href=#{myhttp+"/fr?nm="+sc+"&no=0"}>#{user[0].friends_count}</a>
+       |follow  :<a href=#{myhttp+"/fr?nm="+sc+"&cnt=0"}>#{user[0].friends_count}</a>
        |follower:#{user[0].followers_count}
        - var sc = user[0].screen_name
        |listed  :<a href=#{myhttp+"/listed?nm="+sc}>#{user[0].listed_count}</a>
