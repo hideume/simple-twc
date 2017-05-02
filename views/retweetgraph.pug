@@ -30,7 +30,7 @@ html
             - for (var j=0;j<tw.length;j++) {
             -    var t1 = new Date(tw[j].created_at)
             //-    if (t0.getSeconds()-i*10 > t1.getSeconds()) cc=cc+1  
-            -    if ( (t0.getMinutes()-i*5 < t1.getMinutes()) && (t0.getMinutes()-(i-1)*5 > t1.getMinutes()) ) cc=cc+1  
+            -    if ( (t0.getMinutes()-(i+1)*5 < t1.getMinutes()) && (t0.getMinutes()-i*5 > t1.getMinutes()) ) cc=cc+1  
             - }
         tr
           td #{i*5}分

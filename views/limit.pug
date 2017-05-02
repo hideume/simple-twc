@@ -8,41 +8,47 @@ html
     -var l1 = lm.resources.lists["/lists/members"]
     -var l2 = lm.resources.lists["/lists/list"]
     #11 ---- limit status ---- <br>
-    table
+    table(class="type02")
+      thead
+        tr
+          th item
+          th max
+          th remaining
+          th reset time
       tbody
         tr
           td home    = 
           td #{hm.limit} 
           td #{hm.remaining} 
-          td #{new Date(hm.reset*1000).toLocaleString().substr(10,8)} 
+          td #{new Date(hm.reset*1000).toLocaleString().substr(9,9)} 
         tr
           td user    = 
           td #{us.limit} 
           td #{us.remaining} 
-          td #{new Date(us.reset*1000).toLocaleString().substr(10,8)} 
+          td #{new Date(us.reset*1000).toLocaleString().substr(9,9)} 
         tr
           td retweet = 
           td #{rt.limit} 
           td #{rt.remaining} 
-          td #{new Date(rt.reset*1000).toLocaleString().substr(10,8)} 
+          td #{new Date(rt.reset*1000).toLocaleString().substr(9,9)} 
         tr
           td serch   = 
           td #{sc.limit} 
           td #{sc.remaining} 
-          td #{new Date(sc.reset*1000).toLocaleString().substr(10,8)} 
+          td #{new Date(sc.reset*1000).toLocaleString().substr(9,9)} 
         tr
           td fr/list = 
           td #{c1.limit}
           td #{c1.remaining}
-          td #{new Date(c1.reset*1000).toLocaleString().substr(10,8)} 
+          td #{new Date(c1.reset*1000).toLocaleString().substr(9,9)} 
         tr
           td lists/menbers = 
           td #{l1.limit}
           td #{l1.remaining}
-          td #{new Date(l1.reset*1000).toLocaleString().substr(10,8)} 
+          td #{new Date(l1.reset*1000).toLocaleString().substr(9,9)} 
         tr
           td lists/list = 
           td #{l2.limit}
           td #{l2.remaining}
-          td #{new Date(l2.reset*1000).toLocaleString().substr(10,8)} 
+          td #{new Date(l2.reset*1000).toLocaleString().substr(9,9)} 
 s

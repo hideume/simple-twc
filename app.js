@@ -94,7 +94,7 @@ app.get('/listed',function(req,res) {
   var params = {screen_name:req.query.nm,count:50};
   client.get('lists/memberships', params, function(error, lts, respo) {
     if(!error) {
-        res.render('listed',{tw:lts});
+        res.render('listed',{tw:lts,listedname:req.query.nm});
     }else{
       console.log(error)
     }

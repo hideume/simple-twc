@@ -9,7 +9,7 @@ html
         - for (var i=0 ;i<tw.length ; i++) {
             tr
                 - var sc = tw[i].user.screen_name
-                - var tm = new Date(tw[i].created_at).toLocaleString("ja-JP").substr(5)
+                - var tm = new Date(tw[i].created_at).toLocaleString().substr(5)
                 td #{i} 
                 td #{tm}
                 if tw[i].text.indexOf('RT') == 0

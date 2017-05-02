@@ -8,7 +8,8 @@ table(class="type02")
       th tweets
       th follow
       th follower
-      th listed          
+      th listed
+      th location          
   tbody
     - for (var i=0;i<mem.length;i++) {
         tr
@@ -16,9 +17,10 @@ table(class="type02")
           -var sc = mem[i].screen_name
           td <a href=#{myhttp+"/tl?nm="+sc}>#{sc}</a>
           td <a href=#{myhttp+"/us?nm="+sc}>#{mem[i].name}</a>
-          td #{new Date(mem[i].created_at).toLocaleString().substr(0,10)}
+          td #{new Date(mem[i].created_at).toISOString().substr(0,10)}
           td #{mem[i].statuses_count}
-          td #{mem[i].friends_count}
+          td <a href=#{myhttp+"/fr?nm="+sc+"&cnt=0"}>#{mem[i].friends_count}</a>
           td #{mem[i].followers_count}
-          td #{mem[i].listed_count}
+          td <a href=#{myhttp+"/listed?nm="+sc}>#{mem[i].listed_count}</a>
+          td #{mem[i].location.substr(0,15)}
     - }

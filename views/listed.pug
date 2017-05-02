@@ -1,12 +1,14 @@
 html
   include includes/head.pug
-  table
+  #11 --- listed <a href=#{myhttp+"/us?nm="+listedname}>#{listedname}</a>
+  table(class="type02")
     thead
         tr
           td No
           td screen name
           td list name
           td member count
+          td openess
     tbody
       - for (var i=0;i<tw.lists.length;i++) {
           tr
