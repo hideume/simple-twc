@@ -1,0 +1,45 @@
+html
+  include includes/head.pug
+  #11 --- analysys <a href=#{myhttp+"/us?nm="+name}>#{name}</a>
+    |&nbsp<a href=#{myhttp+"/tl?nm="+name+"&sp=1"}>to timeline表示</a>
+    |&nbsp<a href=#{myhttp+"/tl?nm="+name}>to text表示</a>
+  - rtc,rtst3=go(tw)
+  #12
+    |line = #{tw.length}
+    |RT   = #{rtc}(#{rtc/tw.length*100}%)
+  table(class="type02")
+    tbody
+        - for (var i=0;i<rtst3.length;i++ ) {
+            tr
+                td #{i}
+                td #{rtst3[i][0]} 
+                td #{rtst3[i][1]}
+        -  }
+  script
+    -function go(tw) {
+    - rtc=0
+    - rtst={}
+    - for (var i=0;i<tw.length; i++){
+    -   if (tw[i].text.indexOf("RT") == 0) {
+    -     rtc=rtc+1
+    -     idx  = tw[i].text.indexOf(':')
+    -     sc2  = tw[i].text.substr(4,idx-4)
+    -     if (rtst[sc2]==null) {
+    -        rtst[sc2]=1
+    -     } else {
+    -        rtst[sc2]=rtst[sc2]+1
+    -     }
+    -   }
+    - }
+    - rtst2=[]
+    - k1 = Object.keys(rtst)
+    - for (var i=0;i<k1.length;i++){
+    -     rtst2.push([k1[i],rtst[k1[i]]])
+    - }
+    - rtst2.sort(function(a,b){
+    -     if(a[1]>b[1]) return -1
+    -     if(a[1]<b[1]) return 1
+    -     return 0
+    -})
+    - return  rtc,rtst2
+    -}

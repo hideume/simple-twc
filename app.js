@@ -15,6 +15,8 @@ var client  = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
+
+
 //index
 app.get('/',function(req,res) {
   var params = {screen_name: process.env.TWITTER_SCREEN_NAME,count:50};
@@ -44,8 +46,10 @@ app.get('/tl',function(req,res) {
     if(!error) {
       if(!req.query.sp){
         res.render('index',{tw:tweets,name:req.query.nm});
-      } else {
+      } else if (req.query.sp=="1"){
         res.render('timeindex',{tw:tweets,name:req.query.nm});
+      } else {
+        res.render('analysys',{tw:tweets,name:req.query.nm});
       }
     }else{
       console.log(error)
