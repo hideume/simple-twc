@@ -4,18 +4,41 @@ html
     |&nbsp<a href=#{myhttp+"/tl?nm="+name+"&sp=1"}>to timeline表示</a>
     |&nbsp<a href=#{myhttp+"/tl?nm="+name}>to text表示</a>
   - rtc,rtst3=go(tw)
+  - t1 = new Date(tw[0].created_at)
+  - t2 = new Date(tw[tw.length-1].created_at)
   #12
     |line = #{tw.length}
-    |RT   = #{rtc}(#{rtc/tw.length*100}%)
+    |RT   = #{rtc}(#{rtc/tw.length*100}%)<br>
+    -var msgmin = parseInt((t1-t2)/1000/60)
+    -var msgh = parseInt(msgmin/60)
+    -var msgm = msgmin % 60
+    |time-analysys #{msgh+"時間"+msgm}分　#{(msgmin/50).toString().substr(0,7)}分/msg
+    if (msgsec/50)<3 
+      |&nbspちょっととんでもないスピード！！
+    else if (msgsec/50)<10 
+      |&nbsp職業でしょう
+  - tmtbl = maketimetable(msgmin,tw)
+  table(class="type02")
+    tbody
+      -for (var i=0;i<tmtbl.length;i++) {
+          //if tmtbl[i][1]!=0
+          tr
+            td #{i}
+            td #{tmtbl[i][0].toLocaleString().substr(5,15)}
+            td #{tmtbl[i][1]}
+            td #{"+".repeat(tmtbl[i][1])}
+      -}
+  #13 retweets-analysys
   table(class="type02")
     tbody
         - for (var i=0;i<rtst3.length;i++ ) {
             tr
                 td #{i}
-                td #{rtst3[i][0]} 
+                td <a href=#{myhttp + "/tl?nm=" +rtst3[i][0]+"&sp=1"}>#{rtst3[i][0]}</a> 
                 td #{rtst3[i][1]}
         -  }
   script
+    //RTしている回数でリストアップ
     -function go(tw) {
     - rtc=0
     - rtst={}
@@ -31,6 +54,7 @@ html
     -     }
     -   }
     - }
+    //ここからsoatを行う
     - rtst2=[]
     - k1 = Object.keys(rtst)
     - for (var i=0;i<k1.length;i++){
@@ -42,4 +66,31 @@ html
     -     return 0
     -})
     - return  rtc,rtst2
+    -}
+
+    -function maketimetable(totalmin,tw){
+    - t0 = new Date(tw[0].created_at)
+    - t0.setMinutes(0)
+    - t0.setSeconds(0)
+    - deltamin=parseInt(totalmin/10.0)
+    - deltamin=60.0
+    - tmtbl=[]
+    //最初に時間だけの表を作成する
+    - for (var i=0;i<(totalmin/60+1);i++){
+    -    var tt = new Date(t0);
+    -    tmtbl[i]=[new Date(tt.setMinutes(tt.getMinutes()-deltamin*i)),0]
+    -}
+    //表にはいる発言数を計算する
+    - for (var i=0;i<tmtbl.length;i++) {
+    -    for (var j=0;j<tw.length;j++) {
+    -        jtm = new Date(tw[j].created_at) 
+    -        if (i!=0 && tmtbl[i-1][0]>=jtm && tmtbl[i][0]<jtm) {
+    -           tmtbl[i][1]=tmtbl[i][1]+1
+    -        }
+    -        if (i==0 && tmtbl[1][0]<jtm ) {
+    -           tmtbl[i][1]=tmtbl[i][1]+1
+    -        }
+    -    }
+    - }
+    - return tmtbl
     -}
