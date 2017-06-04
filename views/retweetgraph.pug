@@ -24,14 +24,20 @@ html
           th count
           th graph
       tbody
+        //t0は最初の時間
         - var t0 = new Date(tw[0].created_at)
         - for (var i=0;i<15;i++) {
-            - var cc = 0
-            - for (var j=0;j<tw.length;j++) {
-            -    var t1 = new Date(tw[j].created_at)
-            //-    if (t0.getSeconds()-i*10 > t1.getSeconds()) cc=cc+1  
-            -    if ( (t0.getMinutes()-(i+1)*5 < t1.getMinutes()) && (t0.getMinutes()-i*5 > t1.getMinutes()) ) cc=cc+1  
-            - }
+        - var cc = 0
+        - for (var j=0;j<tw.length;j++) {
+        //   t1はツイートの時間
+        -    var t1 = new Date(tw[j].created_at)
+        -    var t01 = new Date(tw[0].created_at)
+        -    t01 = t01.setMinutes(t0.getMinutes()-(i+1)*5)
+        -    var t02 = new Date(tw[0].created_at)
+        -    t02 = t02.setMinutes(t0.getMinutes()-(i)*5)
+        //-    if (t0.getSeconds()-i*10 > t1.getSeconds()) cc=cc+1  
+        -    if ( (t01 < t1) &&  (t02  >= t1 ) ) cc=cc+1  
+        - }
         tr
           td #{i*5}分
           td #{cc}

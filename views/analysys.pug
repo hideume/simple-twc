@@ -13,12 +13,18 @@ html
     -var msgh = parseInt(msgmin/60)
     -var msgm = msgmin % 60
     |time-analysys #{msgh+"時間"+msgm}分　#{(msgmin/50).toString().substr(0,7)}分/msg
-    if (msgsec/50)<3 
-      |&nbspちょっととんでもないスピード！！
-    else if (msgsec/50)<10 
-      |&nbsp職業でしょう
+    if (msgmin/50)<3 
+      |&nbsp <font color="red">職業でしょう。botもありえます</font>
+    else if (msgmin/50)<10 
+      |&nbsp <font color="red">職業が疑われます</font>
   - tmtbl = maketimetable(msgmin,tw)
   table(class="type02")
+    thead
+      tr
+        th no
+        th time
+        th cnt
+        th view
     tbody
       -for (var i=0;i<tmtbl.length;i++) {
           //if tmtbl[i][1]!=0
@@ -87,7 +93,7 @@ html
     -        if (i!=0 && tmtbl[i-1][0]>=jtm && tmtbl[i][0]<jtm) {
     -           tmtbl[i][1]=tmtbl[i][1]+1
     -        }
-    -        if (i==0 && tmtbl[1][0]<jtm ) {
+    -        if (i==0 && tmtbl[0][0]<jtm ) {
     -           tmtbl[i][1]=tmtbl[i][1]+1
     -        }
     -    }

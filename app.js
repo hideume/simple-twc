@@ -217,7 +217,7 @@ app.get('/prt',function(req,res) {
 });
 //retweet
 app.get('/pladd',function(req,res) {
-  var params={screen_name:req.query.nm,slug:"mark",owner_screen_name:process.env.TWITTER_SCREEN_NAME}
+  var params={screen_name:req.query.nm,slug:"mark2",owner_screen_name:process.env.TWITTER_SCREEN_NAME}
   client.post('lists/members/create/', params,function(error, friends, respo) {
     if(error) {
       console.log(error)

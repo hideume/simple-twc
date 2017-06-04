@@ -22,8 +22,8 @@ html
        |follow  :<a href=#{myhttp+"/fr?nm="+sc+"&cnt=0"}>#{user[0].friends_count}</a>
        |follower:#{user[0].followers_count}
        - var sc = user[0].screen_name
-       |listed  :<a href=#{myhttp+"/listed?nm="+sc}>#{user[0].listed_count}</a>
-       #12 protected #{user[0].protected} <a href=#{myhttp+"/pladd?nm="+sc}>mark add</a>
+       |listed  :<a href=#{myhttp+"/listed?nm="+sc+"&cnt=0"}>#{user[0].listed_count}</a>
+       #12 protected #{user[0].protected} <a href=#{myhttp+"/pladd?nm="+sc}>mark2 add</a>
        //  select.sel
        //    option(value="mark") mark
        //    option(value="girl") girl 
