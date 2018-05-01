@@ -1,8 +1,11 @@
 //- user show
 html
- include includes/head.pug
- #11 --- user --
- table
+ head
+   title s-twitter(user)
+ body
+  include includes/head.pug
+  #11 --- user --
+  table
    tr
      td
         <img src=#{user[0].profile_image_url} width=60 height=60>
@@ -28,8 +31,8 @@ html
        //    option(value="mark") mark
        //    option(value="girl") girl 
        //    option(value="computer") computer
- p list length = #{list.length}
- table(class="type02")
+  p list length = #{list.length}
+  table(class="type02")
    thead
      tr
        th no

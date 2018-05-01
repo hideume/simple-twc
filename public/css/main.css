@@ -27,11 +27,20 @@ table.type02 td {
     border-left: 1px solid #fff;
 }
 
+
+table {
+font-family: "Meiryo UI",sans-serif;
+font-size:90%;
+}
+body {
+font-family: "Meiryo UI",sans-serif;
+font-size: 90%;
+
 #header {
     background: #cff;
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 50%;
     padding: 4px;
-    height: 50px; 
+    height: 20px; 
 }

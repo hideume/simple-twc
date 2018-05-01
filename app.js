@@ -1,5 +1,8 @@
 var express = require('express');
 var app = express();
+app.locals.title = 'simple-twitter'
+
+app.set('title','simple-twitter');
 app.set('view engine', 'pug');
 app.use(express.static('public'));
 
@@ -23,6 +26,8 @@ app.get('/',function(req,res) {
   client.get('statuses/home_timeline', params, function(error, tweets, respo) {
     if(!error) {
         res.render('index',{tw:tweets,name:process.env.TWITTER_SCREEN_NAME});
+    }else{
+      console.log("err"+error)
     }
   });
 });
