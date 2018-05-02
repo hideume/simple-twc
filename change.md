@@ -1,6 +1,8 @@
 # 予定
 emoji,style改善,androido化
 
+# v0.8.1 18/5/2
+trend　２列で表示
 # v0.8.0 18/5/1
 画面タイトル追加、cssでfont変更
 # v0.7.0 5/20
