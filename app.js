@@ -22,7 +22,7 @@ var client  = new Twitter({
 
 //index
 app.get('/',function(req,res) {
-  var params = {screen_name: process.env.TWITTER_SCREEN_NAME,count:50};
+  var params = {screen_name: process.env.TWITTER_SCREEN_NAME,count:100};
   client.get('statuses/home_timeline', params, function(error, tweets, respo) {
     if(!error) {
         res.render('index',{tw:tweets,name:process.env.TWITTER_SCREEN_NAME});

@@ -7,11 +7,13 @@ link(rel="stylesheet",type="text/css",href=myhttp+"/css/main.css")
  |<a href=#{myhttp}>home</a>
  |<a href=#{myhttp+"/lm"}>limit</a>
  |<a href=#{myhttp+"/tr"}>trend</a>
- | _____________________________________ v0.7.2 at 2017/6/4 <br>
+ | _____________________________________ v0.8.1 at 2018/5/2 <br>
  input(type='text' size=100 id="idtext" autocomplete="on") 
  input(type='button' onclick="clicked()" value="検索" width=60 height=20) 
  input(type='hidden' size=2)
  input(type='button' onclick="tweet()" value="ｔｗ" width=60 height=20)
+ input(type='hidden' size=4)
+ input(type='button' onclick="scset()" value="re検索" width=60 height=20)
 #header2
  <br>
 script
@@ -24,4 +26,8 @@ script
   | console.log("tweet!")
   | idtext = document.getElementById('idtext');
   | location.href='http://localhost:3000/tw?q='+idtext.value;
+  | }
+script
+  | function scset() {
+  |  idtext.value = "since:2018-5-2 min_retweets:1000"
   | }
