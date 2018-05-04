@@ -21,7 +21,7 @@ html
             td #{tr[i*2].tweet_volume}
             td  
             td #{i*2+1}
-            if (tr.length >= i*2+1)
+            if (tr.length > i*2+1)
              - var i2 = i*2+1
              -var txt2 = decodeURIComponent(tr[i2].query)
              td <a href=#{myhttp+'/sc?q='+tr[i2].query}>#{txt2}</a>

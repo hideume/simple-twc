@@ -21,8 +21,9 @@ html
                       |&nbsp
                       if tw[i].retweeted_status
                         - var id = tw[i].retweeted_status.id_str
-                        <a href=#{myhttp+"/rt?rt="+id}> re:#{tw[i].retweet_count}</a>&nbsp
-                      | <a href=#{myhttp+"/prt?id="+idm}>retweet</a>
+                      | <a href=#{myhttp+"/prt?id="+idm}>retweet</a>&nbsp
+                      if (tw[i].retweet_count > 0)
+                        <a href=#{myhttp+"/rt?rt="+id}> re:#{tw[i].retweet_count}</a>
                   td(class="type02")
                     != photo(tw[i].extended_entities)
           -  }
