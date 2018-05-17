@@ -21,7 +21,7 @@ script
   | console.log("clicked!")
   | idtext = document.getElementById('idtext');
   | enc = encodeURIComponent(idtext.value);
-  | location.href='http://localhost:3000/sc?q='+enc;
+  | location.href='http://localhost:3000/sc?q='+idtext.value;
   | }
 script
   | function tweet() {
@@ -31,5 +31,10 @@ script
   | }
 script
   | function scset() {
-  |  idtext.value = "since:2018-5-2 min_retweets:1000"
+  |  nn = new Date();
+  |  nn = nn.toLocaleString();
+  |  nn = nn.substr(0,10);
+  |  nn = '2018-5-13';
+  |  //idtext.value = "since:"+nn+" min_retweets:1000";
+  |  idtext.value = "since:2018-5-3 min_retweets:1000";
   | }

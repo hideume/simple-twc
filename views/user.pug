@@ -48,7 +48,7 @@ html
           td #{i}
           td #{list[i].user.screen_name}
           td #{list[i].name}
-          - var tm = new Date(list[0].created_at).toLocaleString()
+          - var tm = new Date(list[i].created_at).toLocaleString()
           td #{tm}
           - var mc = list[i].member_count
           - var sc = list[i].user.screen_name

@@ -113,7 +113,7 @@ app.get('/listed',function(req,res) {
 //search
 app.get('/sc',function(req,res) {
   var xx = encodeURIComponent(req.query.q);
-  var params = {q:req.query.q,lang:"ja",src:"typd",result_type:"popular"};
+  var params = {q:req.query.q,lang:"ja",src:"typd",count:"50"};
   //console.log(xx);
   client.get('search/tweets', params, function(error, tweets, respo) {
     if(!error) {

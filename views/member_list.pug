@@ -1,10 +1,13 @@
 html
-  include includes/head.pug
-  #11 ----listmember #{sn}/#{slug} 
-   - var icnt = parseInt(cnt)
-   |<a href=#{myhttp+"/listmember?nm="+sn+"&slug="+slug+"&cursor="+pre+"&cnt="+(icnt-20)}>pre</a>  
-   if next!=0
-      |<a href=#{myhttp+"/listmember?nm="+sn+"&slug="+slug+"&cursor="+next+"&cnt="+(icnt+20)}>next</a>
-   else
-      |next
-  include includes/membertable.pug
+  head
+    title s-twitter(m-list)
+  body
+    include includes/head.pug
+    #11 ----listmember #{sn}/#{slug} 
+    - var icnt = parseInt(cnt)
+    |<a href=#{myhttp+"/listmember?nm="+sn+"&slug="+slug+"&cursor="+pre+"&cnt="+(icnt-20)}>pre</a>  
+    if next!=0
+        |<a href=#{myhttp+"/listmember?nm="+sn+"&slug="+slug+"&cursor="+next+"&cnt="+(icnt+20)}>next</a>
+    else
+        |next
+    include includes/membertable.pug

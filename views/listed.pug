@@ -1,23 +1,26 @@
 html
-  include includes/head.pug
-  #11 --- listed <a href=#{myhttp+"/us?nm="+listedname}>#{listedname}</a>
-  table(class="type02")
-    thead
-        tr
-          td No
-          td screen name
-          td list name
-          td member count
-          td openess
-    tbody
-      - for (var i=0;i<tw.lists.length;i++) {
+  head
+    title s-twi(list)
+  body
+    include includes/head.pug
+    #11 --- listed <a href=#{myhttp+"/us?nm="+listedname}>#{listedname}</a>
+    table(class="type02")
+      thead
           tr
-            td #{i}
-            - var sc = tw.lists[i].user.screen_name
-            - var mc = tw.lists[i].member_count
-            - var slg = tw.lists[i].slug
-            td <a href=#{myhttp+"/us?nm="+sc}>#{sc}</a>
-            td #{tw.lists[i].name}
-            td <a href=#{myhttp+"/listmember?nm="+sc+"&slug="+slg+"&cursor=-1"}>#{mc}</a>         
-            td #{tw.lists[i].mode}         
-      - }
+            td No
+            td screen name
+            td list name
+            td member count
+            td openess
+      tbody
+        - for (var i=0;i<tw.lists.length;i++) {
+            tr
+              td #{i}
+              - var sc = tw.lists[i].user.screen_name
+              - var mc = tw.lists[i].member_count
+              - var slg = tw.lists[i].slug
+              td <a href=#{myhttp+"/us?nm="+sc}>#{sc}</a>
+              td #{tw.lists[i].name}
+              td <a href=#{myhttp+"/listmember?nm="+sc+"&slug="+slg+"&cursor=-1"}>#{mc}</a>         
+              td #{tw.lists[i].mode}         
+        - }
