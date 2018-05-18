@@ -1,29 +1,32 @@
 //- user&home time
 //-
 html
-  include includes/head.pug
-  #11 --- simple time line <a href=#{myhttp+"/us?nm="+name}>#{name}</a>
-    |&nbsp<a href=#{myhttp+"/tl?nm="+name}>to text表示</a>
-    |&nbsp<a href=#{myhttp+"/tl?nm="+name+"&sp=2"}>to analysys</a>
-  table(class="type02")
-    tbody
-        - for (var i=0 ;i<tw.length ; i++) {
-            tr
-                - var sc = tw[i].user.screen_name
-                - var tm = new Date(tw[i].created_at).toLocaleString().substr(5)
-                td #{i} 
-                td #{tm}
-                if tw[i].text.indexOf('RT') == 0
-                    -var idx = tw[i].text.indexOf(':');
-                    -var sc2 = tw[i].text.substr(4,idx-4);
-                    -var etxt = tw[i].text.substr(idx,50-idx)
-                    td  RT @<a href=#{myhttp+"/us?nm="+sc2}>#{sc2}</a> #{etxt}
-                else
-                    td  #{tw[i].text.substr(0,50)}
-                if tw[i].retweeted_status
-                    - var id = tw[i].retweeted_status.id_str
-                    td <a href=#{myhttp+"/rt?rt="+id}>re:#{tw[i].retweet_count}</a>
-                else
-                    - var id = tw[i].id_str
-                    td <a href=#{myhttp+"/rt?rt="+id}>re:#{tw[i].retweet_count}</a>
-        -  }
+  head
+    title s-twitter(time-line)
+  body
+    include includes/head.pug
+    #11 --- simple time line <a href=#{myhttp+"/us?nm="+name}>#{name}</a>
+        |&nbsp<a href=#{myhttp+"/tl?nm="+name}>to text表示</a>
+        |&nbsp<a href=#{myhttp+"/tl?nm="+name+"&sp=2"}>to analysys</a>
+    table(class="type02")
+        tbody
+            - for (var i=0 ;i<tw.length ; i++) {
+                tr
+                    - var sc = tw[i].user.screen_name
+                    - var tm = new Date(tw[i].created_at).toLocaleString().substr(5)
+                    td #{i} 
+                    td #{tm}
+                    if tw[i].text.indexOf('RT') == 0
+                        -var idx = tw[i].text.indexOf(':');
+                        -var sc2 = tw[i].text.substr(4,idx-4);
+                        -var etxt = tw[i].text.substr(idx,50-idx)
+                        td  RT @<a href=#{myhttp+"/us?nm="+sc2}>#{sc2}</a> #{etxt}
+                    else
+                        td  #{tw[i].text.substr(0,50)}
+                    if tw[i].retweeted_status
+                        - var id = tw[i].retweeted_status.id_str
+                        td <a href=#{myhttp+"/rt?rt="+id}>re:#{tw[i].retweet_count}</a>
+                    else
+                        - var id = tw[i].id_str
+                        td <a href=#{myhttp+"/rt?rt="+id}>re:#{tw[i].retweet_count}</a>
+            -  }

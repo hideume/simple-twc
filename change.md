@@ -1,6 +1,8 @@
 # 予定
 emoji,style改善,androido化
 
+# v0.8.5 18/5/18
+title 
 # v0.8.4 18/5/17
 title bug(listのcreate)
 # v0.8.3 18/5/4
