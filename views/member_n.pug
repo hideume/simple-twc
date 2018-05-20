@@ -1,9 +1,11 @@
 html
+  head
+    title s-twitter(m-next)
   include includes/head.pug
   -var mem = mm.users
   -var icnt = parseInt(cnt)
   #11 
-  |--- member_n <a href=#{myhttp+"/fr?nm="+nm+"&next="+mm.previous_cursor+"&cnt="+(icnt-mem.length)}>back</a>
+  |--- member_next <a href=#{myhttp+"/fr?nm="+nm+"&next="+mm.previous_cursor+"&cnt="+(icnt-mem.length)}>back</a>
   | no = #{no}
   |<a href=#{myhttp+"/fr?nm="+nm+"&next="+mm.next_cursor+"&cnt="+(icnt+mem.length)}>next</a>
   include includes/membertable.pug

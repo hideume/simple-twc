@@ -25,12 +25,23 @@ html
        |follow  :<a href=#{myhttp+"/fr?nm="+sc+"&cnt=0"}>#{user[0].friends_count}</a>
        |follower:#{user[0].followers_count}
        - var sc = user[0].screen_name
+       - var listed_count = user[0].listed_count
        |listed  :<a href=#{myhttp+"/listed?nm="+sc+"&cnt=0"}>#{user[0].listed_count}</a>
        #12 protected #{user[0].protected} <a href=#{myhttp+"/pladd?nm="+sc}>mark2 add</a>
        //  select.sel
        //    option(value="mark") mark
        //    option(value="girl") girl 
        //    option(value="computer") computer
+  p user分析
+  if listed_count > 1000
+    |   <font color="red">要注意</font> listedが多すぎます<br>
+  else if listed_count > 500
+    |   <font color="green">　注意</font> listedが多めです<br>
+  if user[0].statuses_count > 10000
+    |   <font color="red">要注意</font> tweetsが多すぎます
+    - var now = new Date()
+    - var days = Math.floor((now.getTime() - Date.parse(tm)) / (24 * 60 * 60 * 1000));
+    |   平均の１日のtweets = #{(user[0].statuses_count/days).toFixed(2)}
   p list length = #{list.length}
   table(class="type02")
    thead

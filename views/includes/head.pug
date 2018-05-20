@@ -7,13 +7,20 @@ link(rel="stylesheet",type="text/css",href=myhttp+"/css/main.css")
  |<a href=#{myhttp}>home</a>
  |<a href=#{myhttp+"/lm"}>limit</a>
  |<a href=#{myhttp+"/tr"}>trend</a>
- | _____________________________________ v0.8.5 at 2018/5/18 <br>
+ | _____________________________________ v0.8.6 at 2018/5/20 <br>
  input(type='text' size=100 id="idtext" autocomplete="on") 
  input(type='button' onclick="clicked()" value="検索" width=60 height=20) 
  input(type='hidden' size=2)
  input(type='button' onclick="tweet()" value="ｔｗ" width=60 height=20)
  input(type='hidden' size=4)
- input(type='button' onclick="scset()" value="re検索" width=60 height=20)
+ |<br>
+ |<label>検索option</label>
+ input(type='checkbox' onclick="scset()" )
+ |<label>retweet</label>
+ input(type='checkbox' onclick="scusince()" )
+ |<label>since</label>
+ input(type='checkbox' onclick="scfilter()" )
+ |<label>filter</label>
 #header2
  <br>
 script
@@ -29,12 +36,21 @@ script
   | idtext = document.getElementById('idtext');
   | location.href='http://localhost:3000/tw?q='+idtext.value;
   | }
-script
+  |
   | function scset() {
+  |  idtext = document.getElementById('idtext');
+  |  idtext.value = idtext.value + " min_retweets:1000";
+  | }
+  |
+  | function scusince() {
   |  nn = new Date();
-  |  nn = nn.toLocaleString();
-  |  nn = nn.substr(0,10);
-  |  nn = '2018-5-13';
-  |  //idtext.value = "since:"+nn+" min_retweets:1000";
-  |  idtext.value = "since:2018-5-3 min_retweets:1000";
+  |  mon = nn.getMonth() + 1;
+  |  tm = nn.getFullYear() + "-" + mon + "-" + nn.getDate();
+  |  idtext = document.getElementById('idtext');
+  |  idtext.value = idtext.value + " since:" + tm;
+  |
+  | }
+  | function scfilter() {
+  |  idtext = document.getElementById('idtext');
+  |  idtext.value = idtext.value + " filter:images";
   | }

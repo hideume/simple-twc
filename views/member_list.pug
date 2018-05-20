@@ -3,7 +3,7 @@ html
     title s-twitter(m-list)
   body
     include includes/head.pug
-    #11 ----listmember #{sn}/#{slug} 
+    #11 ----listmember <a href="#{myhttp + "/us?nm=" + sn}">#{sn}</a>/#{slug} 
     - var icnt = parseInt(cnt)
     |<a href=#{myhttp+"/listmember?nm="+sn+"&slug="+slug+"&cursor="+pre+"&cnt="+(icnt-20)}>pre</a>  
     if next!=0

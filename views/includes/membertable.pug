@@ -6,6 +6,7 @@ table(class="type02")
       th name
       th create
       th tweets
+      th tw/day
       th follow
       th follower
       th listed
@@ -17,10 +18,14 @@ table(class="type02")
           -var sc = mem[i].screen_name
           td <a href=#{myhttp+"/tl?nm="+sc}>#{sc}</a>
           td <a href=#{myhttp+"/us?nm="+sc}>#{mem[i].name}</a>
+          - now = new Date();
+          - tm = new Date(mem[i].created_at).toLocaleString();
+          - days = Math.floor((now.getTime() - Date.parse(tm)) / (24 * 60 * 60 * 1000));
           td #{new Date(mem[i].created_at).toISOString().substr(0,10)}
-          td #{mem[i].statuses_count}
-          td <a href=#{myhttp+"/fr?nm="+sc+"&cnt=0"}>#{mem[i].friends_count}</a>
-          td #{mem[i].followers_count}
-          td <a href=#{myhttp+"/listed?nm="+sc}>#{mem[i].listed_count}</a>
+          td(align="right") #{mem[i].statuses_count}
+          td(align="right") #{(mem[i].statuses_count/days).toFixed(1)}
+          td(align="right") <a href=#{myhttp+"/fr?nm="+sc+"&cnt=0"}>#{mem[i].friends_count}</a>
+          td(align="right") #{mem[i].followers_count}
+          td(align="right") <a href=#{myhttp+"/listed?nm="+sc}>#{mem[i].listed_count}</a>
           td #{mem[i].location.substr(0,15)}
     - }
