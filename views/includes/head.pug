@@ -7,7 +7,7 @@ link(rel="stylesheet",type="text/css",href=myhttp+"/css/main.css")
  |<a href=#{myhttp}>home</a>
  |<a href=#{myhttp+"/lm"}>limit</a>
  |<a href=#{myhttp+"/tr"}>trend</a>
- | _____________________________________ v0.8.6 at 2018/5/20 <br>
+ | _____________________________________ v0.8.7 at 2018/5/21 <br>
  input(type='text' size=100 id="idtext" autocomplete="on") 
  input(type='button' onclick="clicked()" value="検索" width=60 height=20) 
  input(type='hidden' size=2)
@@ -17,8 +17,10 @@ link(rel="stylesheet",type="text/css",href=myhttp+"/css/main.css")
  |<label>検索option</label>
  input(type='checkbox' onclick="scset()" )
  |<label>retweet</label>
- input(type='checkbox' onclick="scusince()" )
+ input(type='checkbox' onclick="scsince()" )
  |<label>since</label>
+ input(type='checkbox' onclick="scuntil()" )
+ |<label>until</label>
  input(type='checkbox' onclick="scfilter()" )
  |<label>filter</label>
 #header2
@@ -42,14 +44,22 @@ script
   |  idtext.value = idtext.value + " min_retweets:1000";
   | }
   |
-  | function scusince() {
+  | function scsince() {
   |  nn = new Date();
   |  mon = nn.getMonth() + 1;
   |  tm = nn.getFullYear() + "-" + mon + "-" + nn.getDate();
   |  idtext = document.getElementById('idtext');
   |  idtext.value = idtext.value + " since:" + tm;
-  |
   | }
+  |
+  | function scuntil() {
+  |  nn = new Date();
+  |  mon = nn.getMonth() + 1;
+  |  tm = nn.getFullYear() + "-" + mon + "-" + nn.getDate();
+  |  idtext = document.getElementById('idtext');
+  |  idtext.value = idtext.value + " until:" + tm;
+  | }
+  |
   | function scfilter() {
   |  idtext = document.getElementById('idtext');
   |  idtext.value = idtext.value + " filter:images";

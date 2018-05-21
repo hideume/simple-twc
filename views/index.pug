@@ -3,9 +3,10 @@
 html
   head
    title s-twitter(homeline)
+   script
   body
     include includes/head.pug
-    //link(rel="stylesheet",type="text/css",href=myhttp+"/css/main.css")
+    
     #11 --- time line <a href=#{myhttp+"/tl?nm="+name+"&sp=1"}>to time表示</a>
     table(class="type02")
       tbody
@@ -21,7 +22,9 @@ html
                       |&nbsp
                       if tw[i].retweeted_status
                         - var id = tw[i].retweeted_status.id_str
-                      | <a href=#{myhttp+"/prt?id="+idm}>retweet</a>&nbsp
+                      | <a href=#{myhttp+"/prt?id="+idm}>
+                      | <img src=#{myhttp+"/img/re3.png"} width=14 align='bottom'>
+                      | </a>&nbsp
                       if (tw[i].retweet_count > 0)
                         <a href=#{myhttp+"/rt?rt="+id}> re:#{tw[i].retweet_count}</a>
                   td(class="type02")
@@ -36,6 +39,11 @@ html
       -     text2 = text2+"<img src="+urls.media[0].media_url_https+" width=100,height=50>" 
       -  }
       -  return text2               
+      -}
+
+      - function ret(idm){
+      -  rr = myhttp + '/prt?id=' +idm;
+      -  location.href(rr);
       -}
     script
       - function photo(urls) {
