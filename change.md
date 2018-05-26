@@ -1,7 +1,7 @@
 # 予定
 emoji,style改善,androido化
 
-# v0.8.7 18/5/21
+# v0.8.8 18/5/26
 retweet button
 # v0.8.6 18/5/20
 検索option align usr分析

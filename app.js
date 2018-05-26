@@ -74,7 +74,7 @@ app.get('/lm',function(req,res) {
 
 //retweet
 app.get('/rt',function(req,res) {
-  var params = {trim_user:false,count:50};
+  var params = {count:100,stringify_ids:false};
   var ids = req.query.rt
   client.get('statuses/retweets/'+ids, params, function(error, stt, respo) {
     if(!error) {

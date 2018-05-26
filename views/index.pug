@@ -22,13 +22,15 @@ html
                       |&nbsp
                       if tw[i].retweeted_status
                         - var id = tw[i].retweeted_status.id_str
-                      | <a href=#{myhttp+"/prt?id="+idm}>
-                      | <img src=#{myhttp+"/img/re3.png"} width=14 align='bottom'>
-                      | </a>&nbsp
-                      if (tw[i].retweet_count > 0)
-                        <a href=#{myhttp+"/rt?rt="+id}> re:#{tw[i].retweet_count}</a>
+                        | <a href=#{myhttp+"/prt?id="+idm}>
+                        | <img src=#{myhttp+"/img/re3.png"} width=14 align='bottom'>
+                        | </a>&nbsp
+                        | <a href=#{myhttp+"/rtg?rt="+id}> re:#{tw[i].retweet_count}</a>
+                      else if (tw[i].retweet_count > 0 )
+                        - var id = tw[i].id_str
+                        |  <a href=#{myhttp+"/rtg?rt="+id}> re:#{tw[i].retweet_count}</a>
                   td(class="type02")
-                    != photo(tw[i].extended_entities)
+                      != photo(tw[i].extended_entities)
           -  }
 
     script
