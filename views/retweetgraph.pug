@@ -3,21 +3,36 @@ html
     title s-twitter(re-graph)
   body
     include includes/head.pug
-    -var t1 = new Date(tw[0].created_at)
-    -var t2 = new Date(tw[tw.length-1].created_at)
-    -var twecount = tw.length*60*60*1000/(t1-t2)
-    -var twc = tw[0].retweeted_status.retweet_count
-    -var twt = tw[0].retweeted_status.text.substr(0,20)
-    -var twu = tw[0].retweeted_status.user.screen_name
-    -var t3 = new Date(tw[0].retweeted_status.created_at)
-    -var t4 = new Date(tw[tw.length-1].created_at)
-    -var id = tw[0].retweeted_status.id_str
+    -
+     var t1 = new Date(tw[0].created_at)
+     var t2 = new Date(tw[tw.length-1].created_at)
+     var nw = new Date()
+     var twecount = tw.length*60*60*1000/(t1-t2)
+     var twc = tw[0].retweeted_status.retweet_count
+     var twt = tw[0].retweeted_status.text.substr(0,20)
+     var twu = tw[0].retweeted_status.user.screen_name
+     var t3 = new Date(tw[0].retweeted_status.created_at)
+     var tdays = (nw-t3)/(24*60*60*1000)
+     tdays = tdays.toFixed(1)
+     var t4 = new Date(tw[tw.length-1].created_at)
+     var id = tw[0].retweeted_status.id_str
     #11 ---  retweetgraph 
-      |#{(" "+twecount).substr(0,8)}
-      |tweet/時間
-      | count=#{twc} #{twt} #{t3.toLocaleString().substr(5)}
+      |#{tdays}days 経過 
+      if twecount > 1000
+        |<font color="red">#{(" "+twecount).substr(0,8)}</font>
+      else if twecount > 500
+        |<font color="green">#{(" "+twecount).substr(0,8)}</font>
+      else
+        |#{(" "+twecount).substr(0,8)}
+      |tweet/時間（現在速度）<br>
+      | count=#{twc} 
+      |<a href=#{'https://twitter.com/'+twu+'/status/'+tw[0].retweeted_status.id_str} target="_blank">#{twt}</a> 
+      |#{t3.toLocaleString().substr(5)}
       | <a href=#{myhttp+"/tl?nm="+twu}>#{twu}</a>
       | <a href=#{myhttp+"/rt?rt="+id}> retweet表示</a>
+    #11
+      p 取得データは最大80程度なので、80以上のcountはでません。
+        | ほぼ、40/5分=500/時間です
     table(class="type02")
       thead
         tr
@@ -27,7 +42,7 @@ html
       tbody
         //t0は最初の時間
         - var t0 = new Date(tw[0].created_at)
-        - for (var i=0;i<15;i++) {
+        - for (var i=0;i<20;i++) {
         - var cc = 0
         - for (var j=0;j<tw.length;j++) {
         //   t1はツイートの時間

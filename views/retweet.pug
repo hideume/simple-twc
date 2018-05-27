@@ -13,15 +13,15 @@ html
   -var id = tw[0].retweeted_status.id_str
   #11 retweet status ----
       if twecount >=1000
-        |<font color="red" >#{(" "+twecount).substr(0,8)}</font>
+        font(color="red") #{(" "+twecount).substr(0,8)}
       else if twecount >=500
-        |<font color="orange">#{(" "+twecount).substr(0,8)}</font>
+        font(color="orange") #{(" "+twecount).substr(0,8)}
       else
-        | #{(" "+twecount).substr(0,8)}
+        #{(" "+twecount).substr(0,8)}
       |tweet/時間
-      | count=#{twc} #{twt} #{t3.toLocaleString().substr(5)}
-      | <a href=#{myhttp+"/tl?nm="+twu}>#{twu}</a>
-      | <a href=#{myhttp+"/rtg?rt="+id}>graph</a>
+      |count=#{twc} #{twt} #{t3.toLocaleString().substr(5)}
+      <a href=#{myhttp+"/tl?nm="+twu}>#{twu}</a>
+      <a href=#{myhttp+"/rtg?rt="+id}>graph</a>
   table(class="type02")
     thead
       tr

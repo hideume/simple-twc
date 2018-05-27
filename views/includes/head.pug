@@ -7,7 +7,7 @@ link(rel="stylesheet",type="text/css",href=myhttp+"/css/main.css")
  |<a href=#{myhttp}>home</a>
  |<a href=#{myhttp+"/lm"}>limit</a>
  |<a href=#{myhttp+"/tr"}>trend</a>
- | _____________________________________ v0.8.8 at 2018/5/26 <br>
+ | _____________________________________ v0.8.9 at 2018/5/27 <br>
  input(type='text' size=100 id="idtext" autocomplete="on") 
  input(type='button' onclick="clicked()" value="検索" width=60 height=20) 
  input(type='hidden' size=2)
@@ -25,42 +25,43 @@ link(rel="stylesheet",type="text/css",href=myhttp+"/css/main.css")
  |<label>filter</label>
 #header2
  <br>
-script
-  |function clicked() {
-  | console.log("clicked!")
-  | idtext = document.getElementById('idtext');
-  | enc = encodeURIComponent(idtext.value);
-  | location.href='http://localhost:3000/sc?q='+idtext.value;
-  | }
-script
-  | function tweet() {
-  | console.log("tweet!")
-  | idtext = document.getElementById('idtext');
-  | location.href='http://localhost:3000/tw?q='+idtext.value;
-  | }
-  |
-  | function scset() {
-  |  idtext = document.getElementById('idtext');
-  |  idtext.value = idtext.value + " min_retweets:1000";
-  | }
-  |
-  | function scsince() {
-  |  nn = new Date();
-  |  mon = nn.getMonth() + 1;
-  |  tm = nn.getFullYear() + "-" + mon + "-" + nn.getDate();
-  |  idtext = document.getElementById('idtext');
-  |  idtext.value = idtext.value + " since:" + tm;
-  | }
-  |
-  | function scuntil() {
-  |  nn = new Date();
-  |  mon = nn.getMonth() + 1;
-  |  tm = nn.getFullYear() + "-" + mon + "-" + nn.getDate();
-  |  idtext = document.getElementById('idtext');
-  |  idtext.value = idtext.value + " until:" + tm;
-  | }
-  |
-  | function scfilter() {
-  |  idtext = document.getElementById('idtext');
-  |  idtext.value = idtext.value + " filter:images";
-  | }
+script.
+    function clicked() {
+    //console.log("clicked!");
+    //よくわからんが、以下の行があると動く
+    idtextc = document.getElementById('idtext');
+    enc = encodeURIComponent(idtext.value);
+    location.href='http://localhost:3000/sc?q='+enc;
+    }
+script.
+   function tweet() {
+   console.log("tweet!")
+   idtext = document.getElementById('idtext');
+   location.href='http://localhost:3000/tw?q='+idtext.value;
+   }
+  
+   function scset() {
+    idtext = document.getElementById('idtext');
+    idtext.value = idtext.value + " min_retweets:1000";
+   }
+  
+   function scsince() {
+    nn = new Date();
+    mon = nn.getMonth() + 1;
+    tm = nn.getFullYear() + "-" + mon + "-" + nn.getDate();
+    idtext = document.getElementById('idtext');
+    idtext.value = idtext.value + " since:" + tm;
+   }
+  
+   function scuntil() {
+    nn = new Date();
+    mon = nn.getMonth() + 1;
+    tm = nn.getFullYear() + "-" + mon + "-" + nn.getDate();
+    idtext = document.getElementById('idtext');
+    idtext.value = idtext.value + " until:" + tm;
+   }
+  
+   function scfilter() {
+    idtext = document.getElementById('idtext');
+    idtext.value = idtext.value + " filter:images";
+   }
