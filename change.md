@@ -1,6 +1,8 @@
 # 予定
 emoji,style改善,androido化
 
+# v1.0.0 18/5/29
+home-line 変更
 # v0.8.9 18/5/27
 pug script retweetgraph
 # v0.8.8 18/5/26

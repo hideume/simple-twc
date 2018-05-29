@@ -179,8 +179,9 @@ app.get('/fv',function(req,res) {
 
 /////////post
 //tweet
-app.get('/tw',function(req,res) {
-  var params={status:req.query.q}
+app.get('/tw',function(req2,res) {
+  var msg=req2.query.q
+  var params={status:msg}
   client.post('statuses/update', params,function(error, friends) {
     if(error) {
       console.log(error)
