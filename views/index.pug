@@ -17,8 +17,13 @@ html
                   td <img src=#{tw[i].user.profile_image_url} width=32 height=32>
                   - var idm = tw[i].id_str
                   td(width="500") #{i} --#{tm} @<a href=#{myhttp+"/tl?nm="+sc}>#{sc}</a> <a href=#{myhttp+"/us?nm="+sc}>#{tw[i].user.name}</a><br>
+                      - var id = tw[i+1].id_str
+                      != photo(tw[i].extended_entities)
                       !=  linktxt(tw[i].text,myhttp,myhttp)
                       |&nbsp
+                      |<a href=#{"https://twitter.com/intent/tweet?in_reply_to=" + id} target="_blank">
+                      |<img src=#{myhttp+"/img/res.png"} width=14 align='bottom'>
+                      </a>
                       if tw[i].retweeted_status
                         - var id = tw[i].retweeted_status.id_str
                         <a href=#{myhttp+"/prt?id="+idm}>
@@ -29,16 +34,19 @@ html
                         - var id = tw[i].id_str
                         <a href=#{myhttp+"/rtg?rt="+id}> re:#{tw[i].retweet_count}</a>
 
-                      != photo(tw[i].extended_entities)
-
 
                   - var sc = tw[i+1].user.screen_name
                   - var tm = new Date(tw[i+1].created_at).toLocaleString("ja-JP")
                   td <img src=#{tw[i+1].user.profile_image_url} width=32 height=32>
                   - var idm = tw[i+1].id_str
                   td(width="500") #{i+1} --#{tm} @<a href=#{myhttp+"/tl?nm="+sc}>#{sc}</a> <a href=#{myhttp+"/us?nm="+sc}>#{tw[i+1].user.name}</a><br>
+                      - var id = tw[i+1].id_str
+                      != photo(tw[i+1].extended_entities)
                       !=  linktxt(tw[i+1].text,myhttp,myhttp)
                       |&nbsp
+                      |<a href=#{"https://twitter.com/intent/tweet?in_reply_to=" + id} target="_blank">
+                      |<img src=#{myhttp+"/img/res.png"} width=14 align='bottom'>
+                      </a>
                       if tw[i+1].retweeted_status
                         - var id = tw[i+1].retweeted_status.id_str
                         <a href=#{myhttp+"/prt?id="+idm}>
@@ -48,8 +56,6 @@ html
                       else if (tw[i+1].retweet_count > 0 )
                         - var id = tw[i+1].id_str
                         <a href=#{myhttp+"/rtg?rt="+id}> re:#{tw[i+1].retweet_count}</a>
-
-                      != photo(tw[i+1].extended_entities)
           - }
 
     script
