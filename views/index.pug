@@ -5,7 +5,8 @@ mixin setTd(i,tw)
   - var tm = new Date(tw[i].created_at).toLocaleString("ja-JP")
   td <img src=#{tw[i].user.profile_image_url} width=32 height=32>
   td(width="500") 
-    #{i} --#{tm} @<a href=#{myhttp+"/us?nm="+sc}>#{sc}</a>
+    #{i} --#{tm} @<a href=#{myhttp+"/us?nm="+sc}>#{sc}</a> 
+    |&nbsp
     <a href=#{myhttp+"/tl?nm="+sc}>#{tw[i].user.name}</a><br>
     - var id = tw[i].id_str
     != photo(tw[i].extended_entities)
