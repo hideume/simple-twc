@@ -31,17 +31,27 @@ mixin setTd(i,tw)
       <a href=#{myhttp+"/rtg?rt="+id}> re:#{tw[i].retweet_count}</a>
 
 
-
+//引数は
+//tw twitterのデータ（６０個）
+//name このtwitterのscreen_name
+//preid 前の画面での先頭のid_str(元の画面に戻るために使用)
 html
   head
    title s-twitter(homeline)
   body
     include includes/head.pug
     
+    -var endid=tw[tw.length-1].id_str
+    -var stid=tw[0].id_str
+    //現在のstidを次の画面のpreのidに設定する・・
+    //以下のpreidはこの関数のパラメータとして設定されている
     #11 --- time line <a href=#{myhttp+"/tl?nm="+name+"&sp=1"}>to time表示</a>
+      |&nbsp<a href=#{myhttp + "/?nextid=" + preid +'&preid=' + stid}>pre</a>
+      |&nbsp<a href=#{myhttp + "/?nextid=" + endid +'&preid=' + stid}>next</a>
+      |&nbsp len= #{tw.length}
     table(class="type02")
       tbody
-        - for (var i=0 ;i<tw.length/2 ; i=i+2) {
+        - for (var i=0 ;i<tw.length-2 ; i=i+2) {
             tr
               +setTd(i,tw)
 

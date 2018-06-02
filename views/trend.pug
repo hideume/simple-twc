@@ -1,29 +1,32 @@
 html
-  include includes/head.pug
-  #11 ---- trend --
-  -var tmx = tr.length / 2
-  table(class="type02")
-    thead
-      tr
-        th no
-        th name
-        th volume
-        th 
-        th no2
-        th name2
-        th vol2          
-    tbody
-      - for (var i=0;i<tmx;i++) {
-          tr
-            td #{i*2}
-            -var txt = decodeURIComponent(tr[i*2].query)
-            td <a href=#{myhttp+'/sc?q='+tr[i*2].query}>#{txt}</a>
-            td #{tr[i*2].tweet_volume}
-            td  
-            td #{i*2+1}
-            if (tr.length > i*2+1)
-             - var i2 = i*2+1
-             -var txt2 = decodeURIComponent(tr[i2].query)
-             td <a href=#{myhttp+'/sc?q='+tr[i2].query}>#{txt2}</a>
-             td #{tr[i*2+1].tweet_volume}
-      - }
+  head
+    title s-twitter(trend)
+  body
+    include includes/head.pug
+    #11 ---- trend --
+    -var tmx = tr.length / 2
+    table(class="type02")
+      thead
+        tr
+          th no
+          th name
+          th volume
+          th 
+          th no2
+          th name2
+          th vol2          
+      tbody
+        - for (var i=0;i<tmx;i++) {
+            tr
+              td #{i*2}
+              -var txt = decodeURIComponent(tr[i*2].query)
+              td <a href=#{myhttp+'/sc?q='+tr[i*2].query}>#{txt}</a>
+              td #{tr[i*2].tweet_volume}
+              td  
+              td #{i*2+1}
+              if (tr.length > i*2+1)
+              - var i2 = i*2+1
+              -var txt2 = decodeURIComponent(tr[i2].query)
+              td <a href=#{myhttp+'/sc?q='+tr[i2].query}>#{txt2}</a>
+              td #{tr[i*2+1].tweet_volume}
+        - }

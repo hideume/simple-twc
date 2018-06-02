@@ -1,4 +1,7 @@
 html
+  head 
+    title s-twitter(limit)
+  body
     include includes/head.pug
     -var hm = lm.resources.statuses["/statuses/home_timeline"]
     -var us = lm.resources.statuses["/statuses/user_timeline"]
@@ -7,7 +10,8 @@ html
     -var c1 = lm.resources.friends["/friends/list"]
     -var l1 = lm.resources.lists["/lists/members"]
     -var l2 = lm.resources.lists["/lists/list"]
-    #11 ---- limit status ---- <br>
+    -var now = new Date()
+    #11 ---- limit status ---- now = #{now.toLocaleString().substr(9,9)}<br>
     table(class="type02")
       thead
         tr

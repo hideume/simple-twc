@@ -4,6 +4,7 @@ app.locals.title = 'simple-twitter'
 
 app.set('title','simple-twitter');
 app.set('view engine', 'pug');
+app.set('compileDebug',true)
 app.use(express.static('public'));
 
 /*
@@ -22,12 +23,24 @@ var client  = new Twitter({
 
 //index
 app.get('/',function(req,res) {
-  var params = {screen_name: process.env.TWITTER_SCREEN_NAME,count:100};
+  var params = {}
+  if(!req.query.nextid) {
+     params = {screen_name: process.env.TWITTER_SCREEN_NAME,count:60};
+  }else{
+    params = {screen_name: process.env.TWITTER_SCREEN_NAME,count:60,max_id: req.query.nextid};
+  }
   client.get('statuses/home_timeline', params, function(error, tweets, respo) {
     if(!error) {
-        res.render('index',{tw:tweets,name:process.env.TWITTER_SCREEN_NAME});
-    }else{
-      console.log("err"+error)
+      if(req.query.preid)
+        res.render('index',{tw:tweets,
+          name:process.env.TWITTER_SCREEN_NAME,
+          preid:req.query.preid});
+      else
+        res.render('index',{tw:tweets,
+          name:process.env.TWITTER_SCREEN_NAME,
+          preid:0});
+  }else{
+      console.log("err"+error[0].message)
     }
   });
 });
