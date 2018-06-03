@@ -25,22 +25,24 @@ var client  = new Twitter({
 app.get('/',function(req,res) {
   var params = {}
   if(!req.query.nextid) {
-     params = {screen_name: process.env.TWITTER_SCREEN_NAME,count:60};
+     params = {screen_name: process.env.TWITTER_SCREEN_NAME,count:80};
   }else{
-    params = {screen_name: process.env.TWITTER_SCREEN_NAME,count:60,max_id: req.query.nextid};
+    params = {screen_name: process.env.TWITTER_SCREEN_NAME,count:80,max_id: req.query.nextid};
   }
   client.get('statuses/home_timeline', params, function(error, tweets, respo) {
     if(!error) {
-      if(req.query.preid)
+      if(req.query.preid) {
         res.render('index',{tw:tweets,
           name:process.env.TWITTER_SCREEN_NAME,
           preid:req.query.preid});
-      else
+      }else{
         res.render('index',{tw:tweets,
           name:process.env.TWITTER_SCREEN_NAME,
           preid:0});
-  }else{
-      console.log("err"+error[0].message)
+        }
+    }else {
+        //console.log("err"+error[0].message)
+        res.render('err',{msg:error[0].message});
     }
   });
 });
@@ -53,6 +55,8 @@ app.get('/us',function(req,res) {
         client.get('lists/list',params,function(er,ls,respo2) {
           res.render('user',{user:us,list:ls});
         });
+    }else{
+      res.render('err',{msg:error[0].message});
     }
   });
 });
@@ -71,6 +75,7 @@ app.get('/tl',function(req,res) {
       }
     }else{
       console.log(error)
+      res.render('err',{msg:error[0].message});
     }
   });
 });
@@ -94,6 +99,7 @@ app.get('/rt',function(req,res) {
         res.render('retweet',{tw:stt});
     }else{
       console.log(error)
+      res.render('err',{msg:error[0].message});
     }
   });
 });
@@ -107,6 +113,7 @@ app.get('/rtg',function(req,res) {
         res.render('retweetgraph',{tw:stt,id:ids});
     }else{
       console.log(error)
+      res.render('err',{msg:error[0].message});
     }
   });
 });
@@ -119,6 +126,7 @@ app.get('/listed',function(req,res) {
         res.render('listed',{tw:lts,listedname:req.query.nm});
     }else{
       console.log(error)
+      res.render('err',{msg:error[0].message});
     }
   });
 });
@@ -133,6 +141,7 @@ app.get('/sc',function(req,res) {
         res.render('index',{tw:tweets.statuses});
     }else{
       console.log(error)
+      res.render('err',{msg:error[0].message});
     }
   });
 });
@@ -148,6 +157,7 @@ app.get('/listmember',function(req,res) {
         });
     }else{
       console.log(error)
+      res.render('err',{msg:error[0].message});
     }
   });
 });
@@ -174,6 +184,7 @@ app.get('/fr',function(req,res) {
         res.render('member_n',{mm:friends,nm:req.query.nm,cnt:req.query.cnt});
     }else{
       console.log(error);
+      res.render('err',{msg:error[0].message});
     }
   });
 });
@@ -186,6 +197,7 @@ app.get('/fv',function(req,res) {
       res.render('index',{tw:tweets});
     } else {
       console.log(error)
+      res.render('err',{msg:error[0].message});
     }
   });
 });
@@ -198,6 +210,7 @@ app.get('/tw',function(req2,res) {
   client.post('statuses/update', params,function(error, friends) {
     if(error) {
       console.log(error)
+      res.render('err',{msg:error[0].message});
     }else{
       res.redirect('back');
     }
@@ -209,6 +222,7 @@ app.get('/pflc',function(req,res) {
   client.post('friendships/create', params,function(error, friends, respo) {
     if(error) {
       console.log('err')
+      res.render('err',{msg:error[0].message});
     }else{
       res.redirect('back');
     }

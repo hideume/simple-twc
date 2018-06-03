@@ -70,19 +70,26 @@ html
         return text2               
         }
 
-       function ret(idm){
-        rr = myhttp + '/prt?id=' +idm;
-        location.href(rr);
-       }
-
-       function photo(urls) {
-        if (urls!=undefine && urls.media!=undefine) { 
-          text2="" 
-          img = "<img src="+urls.media[0].media_url_https+" height=100 align='right'>'" 
-          text2 = "<a href="+urls.media[0].media_url_https+" target='_blank'>"+img+"</a>"
-          return text2 
+        function ret(idm){
+          rr = myhttp + '/prt?id=' +idm;
+          location.href(rr);
         }
+
+        function photo(urls) {
+          if (urls!=undefine && urls.media!=undefine) {
+            if (urls.media[0].type=="photo") {
+              text2="" 
+              img = "<img src="+urls.media[0].media_url_https+" height=100 align='right'>'" 
+              text2 = "<a href="+urls.media[0].media_url_https+" target='_blank'>"+img+"</a>"
+            }else{
+              vd = urls.media[0].video_info.variants[0]
+              img = "<video src="+vd.url+" height=100 autoplay>'</video>" 
+              text3 = "<a href="+vd.url+" target='_blank'>"+img+"</a>"
+              text2 ="<div style='float:right'>"+text3 +"</div>"
+            }
+            return text2 
+          }
         return ""               
-       }
+        }
 
   

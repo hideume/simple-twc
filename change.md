@@ -1,6 +1,8 @@
 # 予定
 emoji,style改善,androido化
 
+# v1.0.3 18/6/3
+error表示追加 video表示追加
 # v1.0.2 18/6/2
 bug fix
 # v1.0.1 18/5/29
