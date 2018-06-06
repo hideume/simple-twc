@@ -12,6 +12,6 @@ html
           tr
             td #{i}
             -var sc = mem[i].screen_name
-            td <a href=#{myhttp+"/tl?nm="+sc}>#{sc}</a>
-            td <a href=#{myhttp+"/us?nm="+sc}>#{mem[i].name}</a>
+            td <a href=#{myhttp+"/us?nm="+sc}>#{sc}</a>
+            td <a href=#{myhttp+"/tl?nm="+sc}>#{mem[i].name}</a>
       - }

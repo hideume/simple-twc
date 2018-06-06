@@ -1,4 +1,8 @@
 //- user show
+//
+//us userのlist
+//list listのlist
+//friendship friendshipのlist
 html
  head
    title s-twitter(user)
@@ -20,7 +24,7 @@ html
        else
           | follwing:<a href=#{myhttp+"/pflc?nm="+sc}>#{user[0].following}</a>
        //- var a = "follwing:<a href="+myhttp+"/pfl?nm="+sc">"+user[0].following+"</a>"
-       | tweets  :<a href=#{myhttp+"/tl?nm="+sc+"&sp=1"}>#{user[0].statuses_count}</a>
+       | tweets  :<a href=#{myhttp+"/tl?nm="+sc}>#{user[0].statuses_count}</a>
        |favourites:<a href=#{myhttp+"/fv?nm="+sc}>#{user[0].favourites_count}</a>
        |follow  :<a href=#{myhttp+"/fr?nm="+sc+"&cnt=0"}>#{user[0].friends_count}</a>
        |follower:#{user[0].followers_count}
@@ -32,39 +36,50 @@ html
        //    option(value="mark") mark
        //    option(value="girl") girl 
        //    option(value="computer") computer
-  p user分析
-  if listed_count > 1000
-    |   <font color="red">要注意</font> listedが多すぎます<br>
-  else if listed_count > 500
-    |   <font color="green">　注意</font> listedが多めです<br>
-  if user[0].statuses_count > 10000
-    |   <font color="red">要注意</font> tweetsが多すぎます
-    - var now = new Date()
-    - var days = Math.floor((now.getTime() - Date.parse(tm)) / (24 * 60 * 60 * 1000));
-    |   平均の１日のtweets = #{(user[0].statuses_count/days).toFixed(2)}
-  p list length = #{list.length}
-  table(class="type02")
-   thead
-     tr
-       th no
-       th screen_name
-       th name
-       th create_at
-       th member
-       th subscriber
-       th access
-   tbody
-    - for (var i=0;i<list.length;i++) {
+  
+  p user分析 <br>
+    if listed_count > 1000
+      |   <font color="red">要注意</font> listedが多すぎます<br>
+    else if listed_count > 500
+      |   <font color="green">　注意</font> listedが多めです<br>
+    if user[0].statuses_count > 10000
+      |   <font color="red">要注意</font> tweetsが多すぎます
+      - var now = new Date()
+      - var days = Math.floor((now.getTime() - Date.parse(tm)) / (24 * 60 * 60 * 1000));
+      |   平均の１日のtweets = #{(user[0].statuses_count/days).toFixed(2)}
+    
+  div(style='float:left')
+    p list length = #{list.length}
+    table(class="type02")
+      thead
         tr
-          td #{i}
-          td #{list[i].user.screen_name}
-          td #{list[i].name}
-          - var tm = new Date(list[i].created_at).toLocaleString()
-          td #{tm}
-          - var mc = list[i].member_count
-          - var sc = list[i].user.screen_name
-          - var slg = list[i].slug
-          td <a href=#{myhttp+"/listmember?nm="+sc+"&slug="+slg+"&cursor=-1&cnt=0"}>#{mc}<a>
-          td #{list[i].subscriber_count}
-          td #{list[i].mode}
-    - }
+          th no
+          th screen_name
+          th name
+          th create_at
+          th member
+          th subscriber
+          th access
+      tbody
+        - for (var i=0;i<list.length;i++) {
+            tr
+              td #{i}
+              td #{list[i].user.screen_name}
+              - var mc = list[i].member_count
+              - var sc = list[i].user.screen_name
+              - var slg = list[i].slug
+              td <a href=#{myhttp+"/listst?nm="+sc+"&slug="+slg}>#{slg}</a>
+              - var tm = new Date(list[i].created_at).toLocaleString()
+              td #{tm}
+              td <a href=#{myhttp+"/listmember?nm="+sc+"&slug="+slg+"&cursor=-1&cnt=0"}>#{mc}</a>
+              td #{list[i].subscriber_count}
+              td #{list[i].mode}
+        - }
+//
+  div(style='float:left')
+    p #{friendship.length}
+    table(class='type02')
+      thead
+        tr
+          th a
+          th b 

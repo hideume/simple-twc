@@ -53,7 +53,9 @@ app.get('/us',function(req,res) {
   client.get('users/lookup', params, function(error, us, respo) {
     if(!error) {
         client.get('lists/list',params,function(er,ls,respo2) {
-          res.render('user',{user:us,list:ls});
+          client.get('friendships/lookup',params,function(er2,fr,res3) {
+            res.render('user',{user:us,list:ls,friendship:fr});
+          });
         });
     }else{
       res.render('err',{msg:error[0].message});
@@ -63,11 +65,19 @@ app.get('/us',function(req,res) {
 
 //user timeline
 app.get('/tl',function(req,res) {
-  var params = {screen_name: req.query.nm,count:50};
+  if(!req.query.nextid){
+    var params = {screen_name: req.query.nm,count:50};
+  }else{
+    var params = {screen_name: req.query.nm,count:50,max_id:req.query.nextid};
+  }
   client.get('statuses/user_timeline', params, function(error, tweets, respo) {
     if(!error) {
       if(!req.query.sp){
-        res.render('index',{tw:tweets,name:req.query.nm});
+        if(!req.query.nextid) {
+          res.render('usindex',{tw:tweets,name:req.query.nm});
+        }else{
+          res.render('usindex',{tw:tweets,name:req.query.nm,preid:req.query.preid});
+        }
       } else if (req.query.sp=="1"){
         res.render('timeindex',{tw:tweets,name:req.query.nm});
       } else {
@@ -201,6 +211,24 @@ app.get('/fv',function(req,res) {
     }
   });
 });
+
+//favorites
+app.get('/listst',function(req,res) {
+  var params={owner_screen_name:req.query.nm,slug:req.query.slug}
+  client.get('lists/statuses', params,function(error, tweets, respo) {
+    if(!error) {
+      res.render('index',{tw:tweets});
+    } else {
+      console.log(error)
+      res.render('err',{msg:error[0].message});
+    }
+  });
+});
+
+
+
+
+
 
 /////////post
 //tweet
