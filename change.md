@@ -1,6 +1,8 @@
 # 予定
 emoji,style改善,androido化
 
+# v1.0.5 18/6/6
+searchのnext
 # v1.0.4 18/6/6
 slug単位のtime-line
 # v1.0.3 18/6/3

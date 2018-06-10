@@ -14,10 +14,10 @@ html
     //現在のstidを次の画面のpreのidに設定する・・
     //以下のpreidはこの関数のパラメータとして設定されている
     #11 --- time line <a href=#{myhttp+"/tl?nm="+name+"&sp=1"}>to time表示</a>
-      - if(preid!=0) {
-        |&nbsp<a href=#{myhttp + "/?nextid=" + preid +'&preid=' + stid}>pre</a>
+      - if (preid) {
+        |&nbsp<a href=#{myhttp + "/tl?nm="+ name+ "&nextid=" + preid +'&preid=' + stid}>pre</a>
       - }
-      |&nbsp<a href=#{myhttp + "/?nextid=" + endid +'&preid=' + stid}>next</a>
+      |&nbsp<a href=#{myhttp + "/tl?nm="+ name+ "&nextid=" + endid +'&preid=' + stid}>next</a>
       |&nbsp len= #{tw.length}
     table(class="type02")
       tbody
@@ -27,3 +27,4 @@ html
 
               +setTd(i+1,tw)
         - }
+

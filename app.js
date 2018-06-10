@@ -72,11 +72,12 @@ app.get('/tl',function(req,res) {
   }
   client.get('statuses/user_timeline', params, function(error, tweets, respo) {
     if(!error) {
+      //spはtime-line
       if(!req.query.sp){
         if(!req.query.nextid) {
-          res.render('usindex',{tw:tweets,name:req.query.nm});
+          res.render('indexus',{tw:tweets,name:req.query.nm});
         }else{
-          res.render('usindex',{tw:tweets,name:req.query.nm,preid:req.query.preid});
+          res.render('indexus',{tw:tweets,name:req.query.nm,preid:req.query.preid});
         }
       } else if (req.query.sp=="1"){
         res.render('timeindex',{tw:tweets,name:req.query.nm});
@@ -146,9 +147,16 @@ app.get('/sc',function(req,res) {
   var xx = encodeURIComponent(req.query.q);
   var params = {q:req.query.q,lang:"ja",src:"typd",count:"50"};
   //console.log(xx);
+  if(req.query.nextid){
+    params['max_id']=req.query.nextid
+  }
   client.get('search/tweets', params, function(error, tweets, respo) {
     if(!error) {
-        res.render('index',{tw:tweets.statuses});
+        if(!req.query.preid){
+          res.render('indexsc',{tw:tweets.statuses,q:req.query.q});
+        }else{
+          res.render('indexsc',{tw:tweets.statuses,q:req.query.q,preid:req.query.preid});
+        }
     }else{
       console.log(error)
       res.render('err',{msg:error[0].message});

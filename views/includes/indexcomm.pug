@@ -14,7 +14,9 @@ mixin setTd(i,tw)
     |&nbsp
 
     //返信ボタンの設定
-    |<a href=#{"https://twitter.com/intent/tweet?in_reply_to=" + id} target="_blank">
+    - tgt = "https://twitter.com/intent/tweet?in_reply_to=" + id
+    - hrefstr = "javascript:window.open('"+tgt+"','', 'location=no,width=600,height=400,left=800,top=300');void(0);"
+    <a href="#{hrefstr}" target="_blank" >
     |<img src=#{myhttp+"/img/res.png"} width=14 align='bottom'>
     </a>
 
@@ -30,37 +32,7 @@ mixin setTd(i,tw)
     else if (tw[i].retweet_count > 0 )
       <a href=#{myhttp+"/rtg?rt="+id}> re:#{tw[i].retweet_count}</a>
 
-
-//引数は
-//tw twitterのデータ（６０個）
-//name このtwitterのscreen_name
-//preid 前の画面での先頭のid_str(元の画面に戻るために使用)
-html
-  head
-   title s-twitter(homeline)
-  body
-    include includes/head.pug
-    
-    -var endid=tw[tw.length-1].id_str
-    -var stid=tw[0].id_str
-    //現在のstidを次の画面のpreのidに設定する・・
-    //以下のpreidはこの関数のパラメータとして設定されている
-    #11 --- time line <a href=#{myhttp+"/tl?nm="+name+"&sp=1"}>to time表示</a>
-      - if (preid) {
-        |&nbsp<a href=#{myhttp + "/tl?nm="+ name+ "&nextid=" + preid +'&preid=' + stid}>pre</a>
-      - }
-      |&nbsp<a href=#{myhttp + "/tl?nm="+ name+ "&nextid=" + endid +'&preid=' + stid}>next</a>
-      |&nbsp len= #{tw.length}
-    table(class="type02")
-      tbody
-        - for (var i=0 ;i<tw.length-2 ; i=i+2) {
-            tr
-              +setTd(i,tw)
-
-              +setTd(i+1,tw)
-        - }
-
-    script
+  script
       - 
         function linktxt(txt,urls,myhttp) {
         text2 = ""  

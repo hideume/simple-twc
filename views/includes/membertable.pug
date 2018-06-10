@@ -25,8 +25,11 @@ table(class="type02")
           td #{new Date(mem[i].created_at).toISOString().substr(0,10)}
           td(align="right") #{mem[i].statuses_count}
           td(align="right") #{(mem[i].statuses_count/days).toFixed(1)}
-          - tm2 = new Date(mem[i].status.created_at).toISOString();
-          td(align="right") #{tm2.substr(0,10)}
+          if(mem[i].status)
+            - tm2 = new Date(mem[i].status.created_at).toISOString();
+            td(align="right") #{tm2.substr(0,10)}
+          else
+            td
           td(align="right") <a href=#{myhttp+"/fr?nm="+sc+"&cnt=0"}>#{mem[i].friends_count}</a>
           td(align="right") #{mem[i].followers_count}
           td(align="right") <a href=#{myhttp+"/listed?nm="+sc}>#{mem[i].listed_count}</a>
